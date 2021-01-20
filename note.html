@@ -1,0 +1,73 @@
+<head>
+  <!-- jQuery -->
+  <script src="./static/popper.min.js"></script>
+  <script src="./static/jquery.min.js"></script>
+
+  <!--Bootstrap Css-->
+  <link rel="stylesheet" href="./static/bootstrap/css/bootstrap.min.css">
+  <script src="./static/bootstrap/js/bootstrap.min.js"></script>
+
+  <!-- Mathjax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <script>
+  function window_resize() {
+  	var nav_height = $("#header").height();
+  	var window_height = $(window).height();
+  	$("#content").height(window_height - nav_height);
+  	$("#content").css("marginTop", nav_height);
+  	$("#main").css("marginTop", nav_height);
+  }
+
+  $(window).resize(window_resize);
+
+  $(document).ready(function() {
+  	window_resize();
+  });
+
+  function load_page(name) {
+  	var path = "./note_files/" + name + "/" + name + ".html";
+  	$("#main").load(path)
+  }
+  </script>
+</head>
+<body>
+  <div style="width:100%; position: fixed; z-index:2; background-color:#eeeeee; font-size:20px" id="header">
+  <ul class="nav nav-tabs" id="navv">
+  	<li class="nav-item">
+  	  <a class="nav-link disabled" style="color:#000000;">Note</a>
+  	</li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Computer Graphics</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" onclick="load_page('computer_graphics')">图形学基础</a>
+        <a class="dropdown-item" onclick="load_page()">几何</a>
+        <!--<div class="dropdown-divider"></div>-->
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Artificial Intelligence</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">机器学习</a>
+        <a class="dropdown-item" href="#">深度学习</a>
+        <!--<div class="dropdown-divider"></div>-->
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#www">Parallel Programming</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#three">Psychology</a>
+    </li>
+  </ul>
+  </div>
+
+  <div style="width:25%; position: fixed; overflow:scroll; z-index:1;" id="content">
+  </div>
+
+  <div style="width:75%; float: right;" id="main">
+  	
+  </div>
+
+</body>
