@@ -43,6 +43,12 @@
   	}
   }
 
+  function rename_anchor(s) {
+  	s = s.replace(/ /g, "_");
+  	s = s.replace(/'/g, "");
+  	return s;
+  }
+
   function bookmark_close(node, hide_myself) {
   	node = $(node);
   	if (node.is("svg")) node = node.parent();
@@ -81,7 +87,7 @@
 		div.append(sign_open);
 		div.append(sign_closed);
 		div.append(sign_blank);
-		div.append("<a class='font-color-black' href='#" + now.attr("anchorid") + "'>" + now.text() + "</a>");
+		div.append("<a class='font-color-black' href='#" + rename_anchor(now.text()) + "'>" + now.text() + "</a>");
 		div.attr("level", now_level);
 		div.attr("has_child", false);
 		if (now_level == 3) {
@@ -103,7 +109,7 @@
   	  var now_level = -1;
   	  if ($(this).is('h1')) {
   	  	now_level = 1;
-  	  	$("#bookmark").append("<p style='font-size:20px; font-weight:bold;margin-bottom:15px;'><a class='font-color-black' href='#atitle'>" + $(this).html() + "</a></p>");
+  	  	$("#bookmark").append("<p style='font-size:20px; font-weight:bold;margin-bottom:15px;'><a class='font-color-black' href='#" + rename_anchor($(this).text()) + "'>" + $(this).text() + "</a></p>");
   	  }
   	  if ($(this).is('h2')) now_level = 2;
   	  if ($(this).is('h3')) now_level = 3;
@@ -112,7 +118,7 @@
   	  	maintain_stack(divs, levels, $(this), now_level);
   	  }
   	  if (now_level >= 1) {
-  	  	$(this).append("<a style='position: relative; top: -" + ($("#header").height()+10) + ";' id='" + $(this).attr("anchorid") + "'></a>");
+  	  	$(this).append("<a style='position: relative; top: -" + ($("#header").height()+10) + ";' id='" + rename_anchor($(this).text()) + "'></a>");
   	  }
    	});
    	maintain_stack(divs, levels, null, 1);
@@ -139,11 +145,12 @@
   	h3 {
   		font-size: 30px;
   		font-weight: 200;
-  		margin-top: 30px;
+  		margin-top: 40px;
   		margin-bottom: 15px;
   	}
   	h4 {
   		font-size: 20px;
+  		font-weight: bolder;
   		margin-top: 20px;
   		margin-bottom: 10px;
   	}
@@ -155,14 +162,17 @@
   	table.mdtable {
   		border: 0;
   	}
-  	.tablespan30 {
-  		width: 30px;
+  	.tpadding20 {
+  		padding-right: 20px;
+  	}
+  	ul, li {
+  		margin-left: -10px;
   	}
   </style>
 </head>
 <body>
   <div style="width:100%; position: fixed; z-index:2; background-color:#eeeeee; font-size:20px" id="header">
-  <ul class="nav nav-tabs" style="padding: 5px;" id="navv">
+  <ul class="nav nav-tabs" style="padding: 5px 1px 5px 20px;" id="navv">
   	<li class="nav-item">
   	  <a class="nav-link disabled" style="color:#000000;">Note</a>
   	</li>
