@@ -31,15 +31,15 @@
   });
 
   function update_sign(node, is_open) {
-  	node.children("svg#sign_open").hide();
-  	node.children("svg#sign_closed").hide();
-  	node.children("svg#sign_blank").hide();
+  	node.children("svg#sign_open_cloned").hide();
+  	node.children("svg#sign_closed_cloned").hide();
+  	node.children("svg#sign_blank_cloned").hide();
   	if (node.attr("has_child") == "false") {
-  		node.children("svg#sign_blank").show();
+  		node.children("svg#sign_blank_cloned").show();
   	} else if (is_open) {
-  		node.children("svg#sign_open").show();
+  		node.children("svg#sign_open_cloned").show();
   	} else {
-  		node.children("svg#sign_closed").show();
+  		node.children("svg#sign_closed_cloned").show();
   	}
   }
 
@@ -84,6 +84,9 @@
 		var sign_open = $("svg#sign_open").clone();
 		var sign_closed = $("svg#sign_closed").clone();
 		var sign_blank = $("svg#sign_blank").clone();
+		sign_open.attr('id', 'sign_open_cloned');
+		sign_closed.attr('id', 'sign_closed_cloned');
+		sign_blank.attr('id', 'sign_blank_cloned');
 		div.append(sign_open);
 		div.append(sign_closed);
 		div.append(sign_blank);

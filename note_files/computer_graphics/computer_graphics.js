@@ -56,9 +56,9 @@ var str_computer_graphics = "\
 		  &   &   & 1        \
 	\\end{bmatrix} \\) \
 	<h3> Euler Angle </h3> \
-	Order: Z (Roll) → X (Pitch) → Y (Yaw) \
-	Gimbal Lock: mapping of Euler angles to rotations is \\( n \\) to \\( 1 \\) \
-	Quaternion: \\( (x,y,z,w) \\) used for linear interpolation \
+	<p> Order: Z (Roll) → X (Pitch) → Y (Yaw) </p> \
+	<p> Gimbal Lock: mapping of Euler angles to rotations is \\( n \\) to \\( 1 \\) </p> \
+	<p> Quaternion: \\( (x,y,z,w) \\) used for linear interpolation </p> \
 	<h4> Rodrigues' Rotation Formula </h4> \
 	<p> Rotation by angle \\( \\alpha \\) around axis \\( {\\bf n} \\) </p> \
 	\\( {\\bf R}({\\bf n},\\alpha) = \\cos(\\alpha){\\bf I} + (1-\\cos(\\alpha)){\\bf nn}^\\top + \\sin{\\alpha} \\begin{bmatrix} \
@@ -106,7 +106,7 @@ var str_computer_graphics = "\
 	</ul> \
 	<h3> Orthographic Projection </h3> \
 	<p> Camera goes to origin, drop Z coordinate, translate and scale image to \\( [-1,1]^2 \\) </p> \
-	<img width='20%' src='note_files/computer_graphics/orthographic_projection_0.png'/> \
+	<img width='150px' src='note_files/computer_graphics/orthographic_projection_0.png'/> \
 	<p> Generally, map the cuboid \\( [l,r]\\times[b,t]\\times[f,n] \\) to a canonical cube \\( [-1,1]^3 \\) </p> \
 	\\( {\\bf M}_{\\rm ortho} = {\\bf S}_{\\rm ortho}{\\bf T}_{\\rm ortho} = \\begin{bmatrix} \
 		\\frac{2}{r-l} &                &                &   \\\\ \
@@ -121,4 +121,28 @@ var str_computer_graphics = "\
 	\\end{bmatrix} \\) \
 	<p> <a href=''> Field-of-View (FOV) </a>: sometimes prefer vertical FOV (fovY) </p> \
 	<p> <b> Aspect ratio </b> = width / height </p> \
+	<h3> Perspective Projection </h3> \
+	<p>Transform the frustum (perspective projection) to the cuboid (orthographic projection) </p> \
+	<img width='400px' src='note_files/computer_graphics/perspective_projection_0.png'/> \
+	<p> \\( {\\bf M}_{\\rm persp} = {\\bf M}_{\\rm ortho}{\\bf M}_{\\rm persp\\rightarrow ortho} \\) </p> \
+	<p> \\( {\\bf M}_{\\rm persp} \\begin{bmatrix} \
+		x \\\\ y \\\\ z \\\\ 1 \
+	\\end{bmatrix} = \\begin{bmatrix} \
+		nx/z \\\\ ny/z \\\\ {\\rm unknown} \\\\ 1 \
+	\\end{bmatrix} = \\begin{bmatrix} \
+		nx \\\\ ny \\\\ {\\rm unknown} \\\\ z \
+	\\end{bmatrix} \\) </p> \
+	<p> By consider immobile points \\( (0,0,n) \\) and \\( (0,0,f) \\), get unknown coefficients </p> \
+	<p> \\( {\\bf M}_{\\rm persp\\rightarrow ortho} = \\begin{bmatrix} \
+		n &   &     &     \\\\ \
+		  & n &     &     \\\\ \
+		  &   & n+f & -nf \\\\ \
+		  &   & 1   &          \
+	\\end{bmatrix} \\) </p> \
+	<h2> Rasterization </h2> \
+	<p> Break up polygons into triangles, and draw projected triangles on screen and set pixel values </p> \
+	<h3> <span class='badge badge-secondary'>[Basic]</span> Convolution Theorem </h3> \
+	<p> Convolution in spatial domain = Multiplication in frequency domain </p> \
+	<p> Convolution in frequency domain = Multiplication in spatial domain </p> \
+	<h3> <span class='badge badge-secondary'>[Basic]</span> Sampling <h3> \
 ";
