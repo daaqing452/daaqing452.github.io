@@ -11,12 +11,15 @@
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+  <!-- Notes -->
+  <script src="./note_files/computer_graphics/computer_graphics.js"></script>
+
   <script>
   function window_resize() {
   	var nav_height = $("#header").height();
   	var window_height = $(window).height();
-  	$("#content").height(window_height - nav_height);
-  	$("#content").css("marginTop", nav_height);
+  	$("#bookmark").height(window_height - nav_height);
+  	$("#bookmark").css("marginTop", nav_height);
   	$("#main").css("marginTop", nav_height);
   }
 
@@ -24,30 +27,155 @@
 
   $(document).ready(function() {
   	window_resize();
+  	load_page();
   });
 
+  function update_sign(node, is_open) {
+  	node.children("svg#sign_open").hide();
+  	node.children("svg#sign_closed").hide();
+  	node.children("svg#sign_blank").hide();
+  	if (node.attr("has_child") == "false") {
+  		node.children("svg#sign_blank").show();
+  	} else if (is_open) {
+  		node.children("svg#sign_open").show();
+  	} else {
+  		node.children("svg#sign_closed").show();
+  	}
+  }
+
+  function bookmark_close(node, hide_myself) {
+  	node = $(node);
+  	if (node.is("svg")) node = node.parent();
+  	update_sign(node, false);
+  	var level = parseInt(node.attr("level"))+1;
+  	node.children("[level=" + level + "]").each(function() {
+  	  bookmark_close($(this), true);
+  	});
+  	if (hide_myself) node.hide();
+  }
+
+  function bookmark_open(node) {
+  	node = $(node);
+  	if (node.is("svg")) node = node.parent();
+  	var level = parseInt(node.attr("level"))+1;
+  	node.children("[level=" + level + "]").show();
+  	update_sign(node, true);
+  }
+
+  function maintain_stack(divs, levels, now, now_level) {
+  	var n = levels.length;
+	while (n >= 1 && now_level <= levels[n - 1]) {
+	  if (n >= 2) {
+	  	divs[n - 2].append(divs[n - 1]);
+	  	$(divs[n - 2]).attr("has_child", true);
+	  }
+  	  divs.pop();
+  	  levels.pop();
+  	  n--;
+	}
+	if (now != null) {
+		var div = $("<div></div>");
+		var sign_open = $("svg#sign_open").clone();
+		var sign_closed = $("svg#sign_closed").clone();
+		var sign_blank = $("svg#sign_blank").clone();
+		div.append(sign_open);
+		div.append(sign_closed);
+		div.append(sign_blank);
+		div.append("<a class='font-color-black' href='#" + now.attr("anchorid") + "'>" + now.text() + "</a>");
+		div.attr("level", now_level);
+		div.attr("has_child", false);
+		if (now_level == 3) {
+			div.css("margin-left", "20px");
+		} else if (now_level == 4) {
+			div.css("margin-left", "20px");
+		}
+		divs.push(div[0]);
+		levels.push(now_level);
+	}
+  }
+
   function load_page(name) {
-  	var path = "./note_files/" + name + "/" + name + ".html";
-  	$("#main").load(path)
+  	$("#main").html(str_computer_graphics);
+  	$("#bookmark").empty();
+  	var divs = new Array($("#bookmark"));
+  	var levels = new Array(1);
+  	$("#main").children().each(function() {
+  	  var now_level = -1;
+  	  if ($(this).is('h1')) {
+  	  	now_level = 1;
+  	  	$("#bookmark").append("<p style='font-size:20px; font-weight:bold;margin-bottom:15px;'><a class='font-color-black' href='#atitle'>" + $(this).html() + "</a></p>");
+  	  }
+  	  if ($(this).is('h2')) now_level = 2;
+  	  if ($(this).is('h3')) now_level = 3;
+  	  if ($(this).is('h4')) now_level = 4;
+	  if (now_level >= 2) {
+  	  	maintain_stack(divs, levels, $(this), now_level);
+  	  }
+  	  if (now_level >= 1) {
+  	  	$(this).append("<a style='position: relative; top: -" + ($("#header").height()+10) + ";' id='" + $(this).attr("anchorid") + "'></a>");
+  	  }
+   	});
+   	maintain_stack(divs, levels, null, 1);
+   	$("div[level=2]").each(function() {
+   		bookmark_close($(this), false);
+   	});
+   	MathJax.typeset();
   }
   </script>
+
+  <style>
+    .font-color-black {
+    	color: #000000;
+    }
+    h1 {
+    	font-size: 60px;
+    	font-weight: 900;
+    }
+  	h2 {
+  		font-size: 40px;
+  		margin-top: 50px;
+  		margin-bottom: 20px;
+  	}
+  	h3 {
+  		font-size: 30px;
+  		font-weight: 200;
+  		margin-top: 30px;
+  		margin-bottom: 15px;
+  	}
+  	h4 {
+  		font-size: 20px;
+  		margin-top: 20px;
+  		margin-bottom: 10px;
+  	}
+  	p {
+  		line-height: 1;
+  		margin-top: 5px;
+  		margin-bottom: 5px;
+  	}
+  	table.mdtable {
+  		border: 0;
+  	}
+  	.tablespan30 {
+  		width: 30px;
+  	}
+  </style>
 </head>
 <body>
   <div style="width:100%; position: fixed; z-index:2; background-color:#eeeeee; font-size:20px" id="header">
-  <ul class="nav nav-tabs" id="navv">
+  <ul class="nav nav-tabs" style="padding: 5px;" id="navv">
   	<li class="nav-item">
   	  <a class="nav-link disabled" style="color:#000000;">Note</a>
   	</li>
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Computer Graphics</a>
+      <a class="nav-link dropdown-toggle font-color-black" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Computer Graphics</a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" onclick="load_page('computer_graphics')">图形学基础</a>
+        <a class="dropdown-item" onclick="load_page('computer_graphics')">图形学基础 @ GAMES 101</a>
         <a class="dropdown-item" onclick="load_page()">几何</a>
         <!--<div class="dropdown-divider"></div>-->
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Artificial Intelligence</a>
+      <a class="nav-link dropdown-toggle font-color-black" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Artificial Intelligence</a>
       <div class="dropdown-menu">
         <a class="dropdown-item" href="#">机器学习</a>
         <a class="dropdown-item" href="#">深度学习</a>
@@ -55,19 +183,30 @@
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#www">Parallel Programming</a>
+      <a class="nav-link font-color-black" href="#www">Parallel Programming</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#three">Psychology</a>
+      <a class="nav-link font-color-black" href="#three">Psychology</a>
     </li>
   </ul>
   </div>
 
-  <div style="width:25%; position: fixed; overflow:scroll; z-index:1;" id="content">
+  <svg id="sign_closed" style="display:none;" onclick="bookmark_open(this)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+    <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"></path>
+  </svg>
+
+  <svg id="sign_open" style="display:none;" onclick="bookmark_close(this, false)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+    <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"></path>
+  </svg>
+
+  <svg id="sign_blank" style="display:none;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+  </svg>
+
+  <div style="width:25%; position: fixed; overflow:scroll; z-index:1; padding:10px 10px 1px 10px; white-space: nowrap;" level=1 id="bookmark">
   </div>
 
-  <div style="width:75%; float: right;" id="main">
-  	
+  <div style="width:75%; float: right; padding:20px;" id="main">
+  	hello world
   </div>
 
 </body>
