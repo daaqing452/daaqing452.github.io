@@ -128,6 +128,7 @@
    	$("div[level=2]").each(function() {
    		bookmark_close($(this), false);
    	});
+
    	MathJax.typeset();
   }
   </script>
@@ -142,13 +143,13 @@
     }
   	h2 {
   		font-size: 40px;
-  		margin-top: 50px;
+  		margin-top: 60px;
   		margin-bottom: 20px;
   	}
   	h3 {
   		font-size: 30px;
   		font-weight: 200;
-  		margin-top: 40px;
+  		margin-top: 50px;
   		margin-bottom: 15px;
   	}
   	h4 {
@@ -162,8 +163,8 @@
   		margin-top: 5px;
   		margin-bottom: 5px;
   	}
-  	table.mdtable {
-  		border: 0;
+  	.tpadding10 {
+  		padding-right: 10px;
   	}
   	.tpadding20 {
   		padding-right: 20px;
@@ -171,10 +172,13 @@
   	ul, li {
   		margin-left: -10px;
   	}
+  	.script10 {
+  		font-size: 10px;
+  	}
   </style>
 </head>
 <body>
-  <div style="width:100%; position: fixed; z-index:2; background-color:#cccccc; font-size:20px" id="header">
+  <div style="width:100%; position: fixed; z-index:2; background-color:#aaaaaa; font-size:20px" id="header">
   <ul class="nav nav-tabs" style="padding: 5px 1px 5px 20px;" id="navv">
   	<li class="nav-item">
   	  <a class="nav-link disabled" style="color:#000000;">Note</a>
@@ -215,7 +219,7 @@
   <svg id="sign_blank" style="display:none;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
   </svg>
 
-  <div style="width:25%; position: fixed; overflow:scroll; z-index:1; padding:10px 10px 1px 10px; white-space: nowrap;" level=1 id="bookmark">
+  <div style="background-color:#eeeeee; width:25%; position: fixed; overflow:scroll; z-index:1; padding:10px 10px 1px 10px; white-space: nowrap;" level=1 id="bookmark">
   </div>
 
   <div style="width:75%; float: right; padding:20px;" id="main">

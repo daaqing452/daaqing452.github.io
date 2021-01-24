@@ -1,0 +1,23 @@
+<head>
+  <!-- jQuery -->
+  <script src="../static/popper.min.js"></script>
+  <script src="../static/jquery.min.js"></script>
+
+  <!-- Mathjax 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>-->
+
+  <script>
+  	$(document).ready(function() {
+      $("#main").append("<mi mathvariant='double-struck'>&#x1D539</mi></br>");
+  		for (var i = 2000; i <= 2500; ++i) {
+			  console.log($("div"));
+			  $("#main").append(i + "&emsp;&emsp;<mi>&#x" + i + "</mi><br/>");
+		}
+  	});
+  </script>
+</head>
+
+<body>
+  <div id="main"></div>
+</body>
