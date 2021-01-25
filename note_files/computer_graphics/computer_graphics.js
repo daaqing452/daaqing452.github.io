@@ -175,9 +175,9 @@ var str_computer_graphics = "\
 	<h3> Shadow Mapping </h3> \
 	<p> Two passes: </p> \
 	<ol> \
-		<li> Pass 1: get depth image from light source (shadow map, Z-buffer of light source) </li> \
-		<li> Pass 2A: standard image (with depth) from eye </li> \
-		<li> Pass 2B: project visible points in eye view back to light source </li> \
+		<li> [<i>Pass 1</i>]: get depth image from light source (shadow map, Z-buffer of light source) </li> \
+		<li> [<i>Pass 2A</i>]: standard image (with depth) from eye </li> \
+		<li> [<i>Pass 2B</i>]: project visible points in eye view back to light source </li> \
 		<li> Compare distance from light source of each point with the depth of corresponding pixel in shadow map: if not match, the point is in shadow </li> \
 	</ol> \
 	<img width='150px' src='note_files/computer_graphics/shadow_mapping.png'/> \
@@ -1048,8 +1048,8 @@ var str_computer_graphics = "\
 	<p> -&emsp; Do not guarantee equal convergence rate per pixel (dirty results) </p> \
 	<h3> Photon Mapping </h3> \
 	<ol> \
-		<li> Stage 1 (photon tracing): emitting photons from the light source, bouncing them around, then recording photons on diffuse surfaces </li> \
-		<li> Stage 2 (photon collection, final gathering): shoot sub-paths from the camera, bouncing them around, until they hit diffuse surfaces </li> \
+		<li> [<i>Stage 1</i>] (photon tracing): emitting photons from the light source, bouncing them around, then recording photons on diffuse surfaces </li> \
+		<li> [<i>Stage 2</i>] (photon collection, final gathering): shoot sub-paths from the camera, bouncing them around, until they hit diffuse surfaces </li> \
 		<li> Calculation (local density estimation): for each shading point, find the nearest \\(N\\) photons; take the surface area \\(A\\) they cover; brightness is \\(N/A\\) </li> \
 	</ol> \
 	<p> -&emsp; More photons emitted => the same \\(N\\) photons cover smaller \\(\\Delta A\\) => \\(\\Delta A\\) is closer to \\({\\rm d}A\\) </p> \
