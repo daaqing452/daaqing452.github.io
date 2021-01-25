@@ -8,11 +8,12 @@
   <script src="./static/bootstrap/js/bootstrap.min.js"></script>
 
   <!-- Mathjax -->
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.js?features=es6"></script>
+  <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
   <!-- Notes -->
   <script src="./note_files/computer_graphics/computer_graphics.js"></script>
+  <script src="./note_files/parallel_programming/parallel_programming.js"></script>
 
   <script>
   function window_resize() {
@@ -27,7 +28,7 @@
 
   $(document).ready(function() {
   	window_resize();
-  	load_page();
+  	load_page('');
   });
 
   function update_sign(node, is_open) {
@@ -103,8 +104,12 @@
 	}
   }
 
-  function load_page(name) {
-  	$("#main").html(str_computer_graphics);
+  function load_page(page_name) {
+  	var page = str_computer_graphics;
+  	//var page = str_parallel_programming;
+  	if (page_name == 'computer_graphics') page = str_computer_graphics;
+  	if (page_name == 'parallel_programming') page = str_parallel_programming;
+  	$("#main").html(page);
   	$("#bookmark").empty();
   	var divs = new Array($("#bookmark"));
   	var levels = new Array(1);
@@ -203,7 +208,7 @@
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link font-color-black" href="#www">Parallel Programming</a>
+      <a class="nav-link font-color-black" onclick="load_page('parallel_programming')">Parallel Programming</a>
     </li>
     <li class="nav-item">
       <a class="nav-link font-color-black" href="#three">Psychology</a>

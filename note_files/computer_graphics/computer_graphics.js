@@ -1,5 +1,7 @@
 var str_computer_graphics = "\
 	<h1> Computer Graphics </h1> \
+	<p> <b>GAMES 101</b>: [<a href='https://www.bilibili.com/video/av90798049'>bilibili</a>] [<a href='https://sites.cs.ucsb.edu/~lingqi/teaching/games101.html'>UCSB</a>] [<a href='http://sites.cs.ucsb.edu/~lingqi/'>Lingqi Yan</a>] [<a href='http://games-cn.org/'>GAMES</a>] </p> \
+	<p> Update v0: 2020.12.07 </p> \
 	<h2> Transformation </h2> \
 	<h3> Homogeneous Coordinate </h3> \
 	<p>3D Point: \\( (x,y,z,1)^\\top \\) </p> \
@@ -141,10 +143,10 @@ var str_computer_graphics = "\
 	\\end{bmatrix} \\) </p> \
 	<h2> Rasterization </h2> \
 	<p> Break up polygons into triangles, and draw projected triangles on screen and set pixel values </p> \
-	<h3> <span class='badge badge-secondary' style='font-weight:normal'>[Basic]</span> Convolution Theorem </h3> \
+	<h3> <span class='badge badge-dark' style='font-weight:normal'>[Basic]</span> Convolution Theorem </h3> \
 	<p> Convolution in spatial domain = Multiplication in frequency domain </p> \
 	<p> Convolution in frequency domain = Multiplication in spatial domain </p> \
-	<h3> <span class='badge badge-secondary' style='font-weight:normal'>[Basic]</span> Sampling </h3> \
+	<h3> <span class='badge badge-dark' style='font-weight:normal'>[Basic]</span> Sampling </h3> \
 	<p> Sampling = repeat frequency contents </p> \
 	<img width='500px' src='note_files/computer_graphics/sampling_0.png'/> \
 	<p> Aliasing = mixed frequency contents </p> \
@@ -468,7 +470,7 @@ var str_computer_graphics = "\
 		<li> Split node at location of median object (\\( {\\rm O}(n) \\) find medium) </li> \
 		<li> Stop when node contains few elements (e.g., 5) </li> \
 	</ul> \
-	<h3> <span class='badge badge-secondary' style='font-weight:normal'>[Basic]</span> Radiometry </h3> \
+	<h3> <span class='badge badge-dark' style='font-weight:normal'>[Basic]</span> Radiometry </h3> \
 	<p> Measurement system and units for illumination; perform lighting calculations in a physically correct manner </p> \
 	<table cellpadding='5px'> \
 		<tr style='border-bottom: 1px solid #000000; border-top: 1px solid #000000'> \
@@ -565,9 +567,9 @@ var str_computer_graphics = "\
 	<p> Fredholm Integral Equation of second kind with canonical form: </p> \
 	$$ l(u)=e(u)+\\int{l(v)K(u,v){\\rm d}v} \\hspace{100cm} $$ \
 	<p> Discretized to a simple matrix equation </p> \
-	$$ \\begin{align} {\\color{red} L} &= E+K{\\color{red} L} & &emsp;&emsp; & \\text{vector=vector+matrix*vector} \\\\ \
+	$$ \\begin{align} L &= E+KL & &emsp;&emsp; & \\text{vector=vector+matrix*vector} \\\\ \
 	&= (1-K)^{-1}E & & \\\\ \
-	&= (1+K+K^2+K^3+\\cdots+)E & & \\text{Taylor expansion}\\\ (1-x)^{-1} \\end{align} \\hspace{100cm} $$ \
+	&= (1+K+K^2+K^3+\\cdots)E & & \\text{Taylor expansion}\\\ (1-x)^{-1} \\end{align} \\hspace{100cm} $$ \
 	<h4> Global Illumination </h4> \
 	$$ L = &emsp;&emsp;E&emsp;&emsp;+&emsp;&emsp;KE&emsp;&emsp;+&emsp;&emsp;K^2E&emsp;&emsp;+&emsp;&emsp;K^3E&emsp;&emsp;+\\cdots \\hspace{100cm} $$ \
 	<table class='script10' style='margin-top:-10px'> \
@@ -586,7 +588,7 @@ var str_computer_graphics = "\
 	<p style='margin:-15px 0 0 36px'> $$ \\underbrace{&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;} \\hspace{100cm} $$ </p> \
 	<p class='script10' style='margin:-15px 0 0 90px'> Shading in rasterization </p> \
 	<p> Light bouncing will converge (e.g., \\(K^8\\), \\(K^{16}\\)) </p> \
-	<h3> <span class='badge badge-secondary' style='font-weight:normal'>[Basic]</span> Monte Carlo Integration </h3> \
+	<h3> <span class='badge badge-dark' style='font-weight:normal'>[Basic]</span> Monte Carlo Integration </h3> \
 	<p> Estimate the definite integral of given function </p> \
 	<p> Sample on a <b> Probability Density Function (pdf) </b> \\(p(x)\\) within \\([a,b]\\) </p> \
 	$$ \\int_a^b{f(x){\\rm d}x}\\approx\\frac{1}{N}\\sum_{i=1}^N{\\frac{f(X_i)}{p(X_i)}} &emsp;&emsp; X_i\\sim p(x) \\hspace{100cm} $$ \
@@ -641,7 +643,7 @@ var str_computer_graphics = "\
 	\\omega_o + \\omega_i &= 2\\cos\\theta{\\bf\\overrightarrow{n}} = 2(\\omega_i\\cdot{\\bf\\overrightarrow{n}}){\\bf\\overrightarrow{n}} \\\\ \
 	\\omega_o &= -\\omega_i+2(\\omega_i\\cdot{\\bf\\overrightarrow{n}}){\\bf\\overrightarrow{n}} \
 	\\end{align} \\hspace{100cm} $$ \
-	<h3> <span class='badge badge-secondary' style='font-weight:normal'>[Basic]</span> Snell's Law </h3> \
+	<h3> <span class='badge badge-dark' style='font-weight:normal'>[Basic]</span> Snell's Law </h3> \
 	<img width='150px' src='note_files/computer_graphics/snell_law_0.png'/> &emsp;&emsp; \
 	<img width='250px' src='note_files/computer_graphics/snell_law_1.png'/> \
 	$$ \\begin{align} \\eta_i\\sin{\\theta_i} &= \\eta_t\\sin{\\theta_t} \\\\ \
@@ -664,7 +666,7 @@ var str_computer_graphics = "\
 			<td> Diamond </td> <td> \\(2.42\\) </td> \
 		</tr> \
 	</table> \
-	<h3> <span class='badge badge-secondary' style='font-weight:normal'>[Basic]</span> Fresnel Term / Reflection </h3> \
+	<h3> <span class='badge badge-dark' style='font-weight:normal'>[Basic]</span> Fresnel Term / Reflection </h3> \
 	<p> Reflectance depends on incident angle (and polarization of light) </p> \
 	<img width='300px' src='note_files/computer_graphics/fresnel_term_0.png'/> &emsp;&emsp; \
 	<img width='300px' src='note_files/computer_graphics/fresnel_term_1.png'/> \
@@ -1026,7 +1028,7 @@ var str_computer_graphics = "\
 		<li> Eulerian: use a grid to do numerical integration </li> \
 		<li> Interaction: particles transfer properties to grid, grid performs update, then interpolate back to particles </li> \
 	</ul> \
-	<h2> <span class='badge badge-secondary' style='font-weight:normal'>[Advanced]</span> Rendering </h2> \
+	<h2> <span class='badge badge-dark' style='font-weight:normal'>[Advanced]</span> Rendering </h2> \
 	<h3> Bidirectional Path Tracing (BDPT) </h3> \
 	<ol> \
 		<li> Trace sub-paths from both the camera and the light </li> \
@@ -1068,7 +1070,7 @@ var str_computer_graphics = "\
 	<p> -&emsp; Fast and usually gives good results on diffuse scenes </p> \
 	<p> -&emsp; Spikes will emerge when VPLs are close to shading points </p> \
 	<p> -&emsp; Cannot handle glossy materials </p> \
-	<h2> <span class='badge badge-secondary' style='font-weight:normal'>[Advanced]</span> Material </h2> \
+	<h2> <span class='badge badge-dark' style='font-weight:normal'>[Advanced]</span> Material </h2> \
 	<h3> Participating Media </h3> \
 	<p> Like cloud, fog, ... </p> \
 	<p> At any point as light travels through a participating medium, it can be (partially) absorbed and scattered </p> \
