@@ -200,7 +200,7 @@ var str_computer_graphics = "\
 	<p> \\( L \\): reflected light </p> \
 	<p> \\( k,p \\): coefficients </p> \
 	<p> \\( \\frac{I}{r^2} \\): the energy arrived at the shading point (intensity / (distance from the light source)<sup>2</sup>) </p> \
-	<p> \\( {\\bf h} = \\frac{{\\bf v}+{\\bf l}}{||{\\bf v}+{\\bf l}||} \\): the bisector of \\( {\\bf v} \\) and \\( {\\bf l} \\) </p> \
+	<p> \\( {\\bf h} = \\frac{{\\bf v}+{\\bf l}}{\\left\\|{\\bf v}+{\\bf l}\\right\\|} \\): the bisector of \\( {\\bf v} \\) and \\( {\\bf l} \\) </p> \
 	<h3> Shading Models </h3> \
 	<table> \
 		<tr> \
@@ -216,7 +216,7 @@ var str_computer_graphics = "\
 	</table> \
 	<h3> Interpolation of Vertex Normal Vector </h3> \
 	<p> Average surrounding faces' normal vectors </p> \
-	<p> $$ {\\bf N}_v = \\frac{\\sum_i{{\\bf N}_i}}{||\\sum_i{{\\bf N}_i}||} \\hspace{100cm} $$ </p> \
+	<p> $$ {\\bf N}_v = \\frac{\\sum_i{{\\bf N}_i}}{\\left\\|\\sum_i{{\\bf N}_i}\\right\\|} \\hspace{100cm} $$ </p> \
 	<img width='200px' src='note_files/computer_graphics/interpolation_of_normal.png'/> \
 	<h3> Barycentric Coordinate </h3> \
 	<p> A coordinate system \\( (\\alpha,\\beta,\\gamma) \\) for triangles </p> \
@@ -617,9 +617,9 @@ var str_computer_graphics = "\
 	<p> To avoid wasted rays when uniformly sampling the hemisphere at the shading point </p> \
 	<p> Sampling the light doesn't need Russian Roulette </p> \
 	<p> Need to test if the ray is blocked by other objects </p> \
-	$$ \\begin{align} {\\rm d}\\omega &= \\frac{{\\rm d}A\\cos{\\theta^{'}}}{||x^{'}-x||^2} \\\\ \
+	$$ \\begin{align} {\\rm d}\\omega &= \\frac{{\\rm d}A\\cos{\\theta^{'}}}{\\left\\|x^{'}-x\\right\\|^2} \\\\ \
 	L_o(x,\\omega_o) &= \\int_{\\Omega^+}{L_i(x,\\omega_i)f_r(x,\\omega_i\\omega_o)\\cos{\\theta_i}\\\ {\\rm d}\\omega_i} \\\\ \
-	&= \\int_A{L_i(x,\\omega_i)f_r(x,\\omega_i\\omega_o)\\frac{\\cos{\\theta}\\cos{\\theta^{'}}}{||x^{'}-x||^2}{\\rm d}A} \\end{align} \\hspace{100cm} $$ \
+	&= \\int_A{L_i(x,\\omega_i)f_r(x,\\omega_i\\omega_o)\\frac{\\cos{\\theta}\\cos{\\theta^{'}}}{\\left\\|x^{'}-x\\right\\|^2}{\\rm d}A} \\end{align} \\hspace{100cm} $$ \
 	<img width='250px' src='note_files/computer_graphics/path_tracing.png'/> \
 	<h4> Other Notes </h4> \
 	<ul> \
@@ -891,10 +891,10 @@ var str_computer_graphics = "\
 	<h3> Mass Spring System </h3> \
 	<img width='100px' src='note_files/computer_graphics/mass_spring_system_0.png'/> \
 	<p> Force pulls points at length \\(l\\): </p> \
-	$$ {\\bf f}_a=k_s&emsp;\\frac{{\\bf b}-{\\bf a}}{||{\\bf b}-{\\bf a}||}&emsp;(||{\\bf b}-{\\bf a}||-l)=-{\\bf f}_b \\hspace{100cm} $$ \
+	$$ {\\bf f}_a=k_s&emsp;\\frac{{\\bf b}-{\\bf a}}{\\left\\|{\\bf b}-{\\bf a}\\right\\|}&emsp;(\\left\\|{\\bf b}-{\\bf a}\\right\\|-l)=-{\\bf f}_b \\hspace{100cm} $$ \
 	<p class='script10' style='margin:-10px 0 15px 0'> <span style='margin-left:22px'>Stiffness</span> <span style='margin-left:17px'>Direction</span> <span style='margin-left:90px'>Rest length</span> </p> \
 	<p> Energy loss: </p> \
-	$$ {\\bf e}_a=k_d&emsp;\\frac{{\\bf b}-{\\bf a}}{||{\\bf b}-{\\bf a}||}\\cdot\\left\(\\dot{b}-\\dot{a}\\right\)&ensp;\\cdot&ensp;\\frac{{\\bf b}-{\\bf a}}{||{\\bf b}-{\\bf a}||} \\hspace{100cm} $$ \
+	$$ {\\bf e}_a=k_d&emsp;\\frac{{\\bf b}-{\\bf a}}{\\left\\|{\\bf b}-{\\bf a}\\right\\|}\\cdot\\left\(\\dot{b}-\\dot{a}\\right\)&ensp;\\cdot&ensp;\\frac{{\\bf b}-{\\bf a}}{\\left\\|{\\bf b}-{\\bf a}\\right\\|} \\hspace{100cm} $$ \
 	<p class='script10 script_under_formula'> <span style='margin-left:22px'>Damping</span> <span style='margin-left:12px'>Relative velocity projected</span> <span style='margin-left:40px'>Direction</span> </p> \
 	<p> where \\(\\bf a\\) is position, \\(\\dot{a}=\\frac{{\\rm d}a}{{\\rm d}t} \\), \\( \\ddot{a}=\\frac{{\\rm d}\\dot{a}}{{\\rm d}t} \\) </p> \
 	<p> Structures from springs: </p> \
@@ -976,7 +976,7 @@ var str_computer_graphics = "\
 	<p> Adaptive Step Size </p> \
 	<ol> \
 		<li> Compute \\(x_1^T\\) with a Euler step of size \\(T\\); compute \\(x_{1/2}^T\\) with two Euler steps of size \\(T/2\\) </li> \
-		<li> Compute error \\(||x_1^T-x_{1/2}^T||\\), if error exceeds a threshold reduce step size and try again </li> \
+		<li> Compute error \\(\\left\\|x_1^T-x_{1/2}^T\\right\\|\\), if error exceeds a threshold reduce step size and try again </li> \
 	</ol> \
 	<h4> Implicit Euler (Backward Euler) </h4> \
 	$$ \\begin{align} {\\bf x}^{t+\\Delta t} &= {\\bf x}^t + \\Delta t\\\ \\dot{\\bf x}^{t+\\Delta t} \\\\ \

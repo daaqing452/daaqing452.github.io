@@ -51,7 +51,7 @@ var str_machine_learning = "\
 		</li> \
 		<li> \
 			<p> 最大化“广义瑞利商”： </p> \
-			$$ J=\\frac{||w^\\top\\mu_0-w^\\top\\mu_1||_2^2}{w^\\top\\Sigma_0w+w^\\top\\Sigma_1w} = \\frac{w^\\top S_bw}{w^\\top S_ww} $$ \
+			$$ J=\\frac{\\left\\|w^\\top\\mu_0-w^\\top\\mu_1\\right\\|_2^2}{w^\\top\\Sigma_0w+w^\\top\\Sigma_1w} = \\frac{w^\\top S_bw}{w^\\top S_ww} $$ \
 			<p> 其中\\(\\mu_i\\)为均值向量，\\(w^\\top\\mu_i\\)为投影点（实数）， \\(\\Sigma_i\\)为协方差矩阵 </p> \
 			<p> -&emsp; 类间散度矩阵：\\( S_b=(\\mu_0-\\mu_1)(\\mu_0-\\mu_1)^\\top \\) </p> \
 			<p> -&emsp; 类内散度矩阵：\\( S_w=\\Sigma_0+\\Sigma_1=\\sum_i{\\sum_{x\\in D_i}{(x-\\mu_i)(x-\\mu_i)^\\top}} \\) </p> \
@@ -128,15 +128,15 @@ var str_machine_learning = "\
 	</ul> \
 	<h2> 支持向量机（Support Vector Machine，SVM） </h2> \
 	<p> 超平面：\\( {\\pmb w}^\\top{\\pmb x}+b=0 \\)， \\( \\begin{cases} {\\pmb w}^\\top{\\pmb x}+b\\ge+1 & y_i=+1 正例 \\\\ {\\pmb w}^\\top{\\pmb x}+b\\le -1 & y_i=-1 负例 \\end{cases} \\)，等号成立的样本为支持向量 </p> \
-	<p> 离超平面距离：\\( r=\\frac{\\left| {\\pmb w}^\\top{\\pmb x}+b \\right|}{||w||} \\) </p> \
+	<p> 离超平面距离：\\( r=\\frac{\\left| {\\pmb w}^\\top{\\pmb x}+b \\right|}{\\left\\|w\\right\\|} \\) </p> \
 	<div style='text-align:center'><img align='middle' width='250px' src='note_files/machine_learning/svm.png'/></div> \
 	<h3> SVM基本型 </h3> \
-	<p> 最大化支持向量间隔\\( \\gamma=\\frac{2}{||{\\pmb w}||} \\)，即 </p> \
-	$$ \\begin{align} \\min_{{\\pmb w},b}&emsp; & \\frac{1}{2}||{\\pmb w}||^2 \\\\ \
+	<p> 最大化支持向量间隔\\( \\gamma=\\frac{2}{\\left\\|{\\pmb w}\\right\\|} \\)，即 </p> \
+	$$ \\begin{align} \\min_{{\\pmb w},b}&emsp; & \\frac{1}{2}\\left\\|{\\pmb w}\\right\\|^2 \\\\ \
 	\\text{s.t.}&emsp; & y_i\\left\({\\pmb w}^\\top{\\pmb x}+b\\right\)\\ge 1 \\end{align} $$ \
 	<ol> \
 		<li> <p> 拉格朗日乘子法： </p> \
-		$$ \\mathcal{L}({\\pmb w},b,{\\pmb\\alpha})=\\frac{1}{2}||{\\pmb w}||^2+\\sum_{i=1}^m{\\alpha_i\\left\( 1-y_i\\left\( {\\pmb w}^\\top{\\pmb x}_i+b \\right\) \\right\)} $$ \
+		$$ \\mathcal{L}({\\pmb w},b,{\\pmb\\alpha})=\\frac{1}{2}\\left\\|{\\pmb w}\\right\\|^2+\\sum_{i=1}^m{\\alpha_i\\left\( 1-y_i\\left\( {\\pmb w}^\\top{\\pmb x}_i+b \\right\) \\right\)} $$ \
 		<p> 其中\\( {\\pmb\\alpha}=\\\{\\alpha_i\\ge 0\\\} \\)为拉格朗日乘子 </p> \
 		<p> KKT条件：\\(\\alpha_i\\ge 0\\)，\\(y_i\\left\({\\pmb w}^\\top{\\pmb x}_i+b\\right\)-1\\ge 0\\)，且两者其中必有一项\\(=0\\) </p> </li> \
 		<li> <p> \\(\\mathcal{L}({\\pmb w},b,{\\pmb\\alpha})\\)对\\({\\pmb w},b\\)求偏导为\\(0\\)可得： </p> \
@@ -169,10 +169,10 @@ var str_machine_learning = "\
 			<td> \\( \\left\( {\\pmb x}_i^\\top{\\pmb x}_j \\right\)^d \\) </td> \
 		</tr> <tr class='table_padding20'> \
 			<td> 高斯核（RBF） </td> \
-			<td> $$ \\exp{\\left\( -\\frac{||{\\pmb x}_i-{\\pmb x}_j||^2}{2\\sigma^2} \\right\)} $$ </td> \
+			<td> $$ \\exp{\\left\( -\\frac{\\left\\|{\\pmb x}_i-{\\pmb x}_j\\right\\|^2}{2\\sigma^2} \\right\)} $$ </td> \
 		</tr> <tr> \
 			<td> 拉普拉斯核 </td> \
-			<td> $$ \\exp{\\left\( -\\frac{||{\\pmb x}_i-{\\pmb x}_j||}{\\sigma} \\right\)} $$ </td> \
+			<td> $$ \\exp{\\left\( -\\frac{\\left\\|{\\pmb x}_i-{\\pmb x}_j\\right\\|}{\\sigma} \\right\)} $$ </td> \
 		</tr> <tr style='border-bottom:1px solid #000000;'> \
 			<td> Sigmoid核 </td> \
 			<td> \\( \\tanh{\\left\( \\beta{\\pmb x}_i^\\top{\\pmb x}_j+\\theta \\right)} \\) </td> \
@@ -182,7 +182,7 @@ var str_machine_learning = "\
 	<ol> \
 		<li> \
 			<p> 最大化间隔的同时，不满足约束的样本尽可能少： </p> \
-			$$ \\min_{{\\pmb w},b}{\\frac{1}{2}||{\\pmb w}||^2}+C\\sum_{i=1}^m{\\ell\\left\( y_i\\left\( {\\pmb w}^\\top{\\pmb x}_i+b \\right\)-1 \\right\)} $$ \
+			$$ \\min_{{\\pmb w},b}{\\frac{1}{2}\\left\\|{\\pmb w}\\right\\|^2}+C\\sum_{i=1}^m{\\ell\\left\( y_i\\left\( {\\pmb w}^\\top{\\pmb x}_i+b \\right\)-1 \\right\)} $$ \
 			<table> \
 				<tr> <td> -&emsp; </td> <td> \\( \\ell_{0/1}(z) \\) </td> <td> 0/1损失 </td> </tr> \
 				<tr> <td> -&emsp; </td> <td> \\( \\ell_{\\text{hinge}}(z)=\\max{(0,1-z)} \\) </td> <td> hinge损失 </td> </tr> \
@@ -191,12 +191,12 @@ var str_machine_learning = "\
 			</table> \
 		</li> <li> \
 			<p> 引入松弛变量\\(\\xi_i\\)：</p> \
-			$$ \\begin{align} \\min_{{\\pmb w},b} &emsp; & \\frac{1}{2}||{\\pmb w}||^2+C\\sum_{i=1}^m{\\xi_i} \\\\ \
+			$$ \\begin{align} \\min_{{\\pmb w},b} &emsp; & \\frac{1}{2}\\left\\|{\\pmb w}\\right\\|^2+C\\sum_{i=1}^m{\\xi_i} \\\\ \
 			\\text{s.t.} &emsp; & y_i\\left\( {\\pmb w}^\\top{\\pmb x}_i+b\\ge 1-\\xi_i \\right\) \\\\ \
 			& \\xi_i\\ge 0 \\end{align} $$ \
 		</li> <li> \
 			<p> 拉格朗日乘子法： </p> \
-			$$ \\mathcal{L}({\\pmb w},b,{\\pmb\\alpha},{\\pmb\\xi},{\\pmb\\mu})=\\frac{1}{2}||{\\pmb w}||^2+C\\sum_{i=1}^m{\\xi_i}+\\sum_{i=1}^m{\\alpha_i\\left\( 1-\\xi_i-y_i\\left\( {\\pmb w}^\\top{\\pmb x}_i+b \\right\) \\right\)} - \\sum_{i=1}^m{\\mu_i\\xi_i} $$ \
+			$$ \\mathcal{L}({\\pmb w},b,{\\pmb\\alpha},{\\pmb\\xi},{\\pmb\\mu})=\\frac{1}{2}\\left\\|{\\pmb w}\\right\\|^2+C\\sum_{i=1}^m{\\xi_i}+\\sum_{i=1}^m{\\alpha_i\\left\( 1-\\xi_i-y_i\\left\( {\\pmb w}^\\top{\\pmb x}_i+b \\right\) \\right\)} - \\sum_{i=1}^m{\\mu_i\\xi_i} $$ \
 			<p> 其中\\({\\pmb\\alpha}=\\\{\\alpha_i\\ge 0\\\},{\\pmb\\mu}=\\\{\\mu_i\\ge 0\\\} \\)为拉格朗日乘子 </p> \
 		</li> <li> \
 			<p> \\( \\mathcal{L}({\\pmb w},b,{\\pmb\\alpha},{\\pmb\\xi},{\\pmb\\mu}) \\)对\\( {\\pmb w},b,\\xi_i \\)求偏导为\\(0\\)可得： </p> \
@@ -228,18 +228,18 @@ var str_machine_learning = "\
 	<h3> 支持向量回归（SVR） </h3> \
 	<ol> \
 		<li> <p> 衡量绝对值误差： </p> \
-		$$ \\min_{{\\pmb w},b}{\\frac{1}{2}||{\\pmb w}||^2+C\\sum_{i=1}^m\\ell_{\\epsilon}(f({\\pmb x}_i)-y_i)} $$ \
+		$$ \\min_{{\\pmb w},b}{\\frac{1}{2}\\left\\|{\\pmb w}\\right\\|^2+C\\sum_{i=1}^m\\ell_{\\epsilon}(f({\\pmb x}_i)-y_i)} $$ \
 		<p> 其中 </p> \
 		$$ \\ell_{\\epsilon}(z) = \\begin{cases} 0 & \\text{if}\\\ |z|\\le\\epsilon \\\\ |z|-\\epsilon & \\text{otherwise} \\end{cases} $$ \
 		</li> \
 		<li> <p> 引入松弛变量\\(\\xi_i\\)和\\(\\hat{\\xi}_i\\)： </p> \
-		$$ \\begin{align} \\min_{{\\pmb w},b} &emsp; & \\frac{1}{2}||{\\pmb w}||^2+C\\sum_{i=1}^m{\\left\(\\xi_i+\\hat{\\xi}_i\\right\)} \\\\ \
+		$$ \\begin{align} \\min_{{\\pmb w},b} &emsp; & \\frac{1}{2}\\left\\|{\\pmb w}\\right\\|^2+C\\sum_{i=1}^m{\\left\(\\xi_i+\\hat{\\xi}_i\\right\)} \\\\ \
 		\\text{s.t.} &emsp; & f({\\pmb x}_i)-y_i\\le\\epsilon+\\xi_i \\\\ \
 		& y_i-f({\\pmb x}_i)\\le\\epsilon+\\hat{\\xi}_i \\\\ \
 		& \\xi\\ge 0, \\hat{\\xi}_i\\ge 0 \\end{align} $$ \
 		<li> <p> 拉格朗日乘子法： </p> \
 		$$ \\mathcal{L}\\left\(\ {\\pmb w},b,{\\pmb\\alpha},\\hat{\\pmb\\alpha},{\\pmb\\xi},\\hat{\\pmb\\xi},{\\pmb\\mu},\\hat{\\pmb\\mu} \\right\) = \
-		\\frac{1}{2}||{\\pmb w}||^2 + C\\sum_{i=1}^m{\\left\( \\xi_i+\\hat{\\xi}_i \\right\)} - \\sum_{i=1}^m{\\mu_i\\xi_i} - \\sum_{i=1}^m{\\hat{\\mu}_i\\hat{\\xi}_i} + \\sum_{i=1}^m{\\alpha_i(f({\\pmb x}_i)-y_i-\\epsilon-\\xi_i)} + \\sum_{i=1}^m{\\hat{\\alpha}_i\\left\( y_i-f({\\pmb x}_i)-\\epsilon-\\hat{\\xi}_i \\right\)} $$ \
+		\\frac{1}{2}\\left\\|{\\pmb w}\\right\\|^2 + C\\sum_{i=1}^m{\\left\( \\xi_i+\\hat{\\xi}_i \\right\)} - \\sum_{i=1}^m{\\mu_i\\xi_i} - \\sum_{i=1}^m{\\hat{\\mu}_i\\hat{\\xi}_i} + \\sum_{i=1}^m{\\alpha_i(f({\\pmb x}_i)-y_i-\\epsilon-\\xi_i)} + \\sum_{i=1}^m{\\hat{\\alpha}_i\\left\( y_i-f({\\pmb x}_i)-\\epsilon-\\hat{\\xi}_i \\right\)} $$ \
 		<p> 其中\\({\\pmb\\alpha}=\\\{\\alpha_i\\ge 0\\\},\\hat{\\pmb\\alpha}=\\\{\\hat{\\alpha}_i\\ge 0\\\},{\\pmb\\mu}=\\\{\\mu_i\\ge 0\\\},\\hat{\\pmb\\mu}=\\\{\\hat{\\mu}_i\\ge 0\\\} \\)为拉格朗日乘子 </p> </li> \
 		<li> <p> \\( \\mathcal{L}\\left\(\ {\\pmb w},b,{\\pmb\\alpha},\\hat{\\pmb\\alpha},{\\pmb\\xi},\\hat{\\pmb\\xi},{\\pmb\\mu},\\hat{\\pmb\\mu} \\right\) \\)对\\( {\\pmb w},b,\\xi_i,\\hat{\\xi}_i \\)求偏导为0可得： </p> \
 		$$ \\begin{align} {\\pmb w} &= \\sum_{i=1}^m{\\left\( \\hat{\\alpha}_i - \\alpha_i \\right\){\\pmb x}_i} \\\\ \
@@ -562,4 +562,152 @@ var str_machine_learning = "\
 		<li> 输出表示扰动：随机改变一些标签；分类化为回归 </li> \
 	</ul> \
 	<h2> 聚类算法 </h2> \
+	<h3> 距离定义 </h3> \
+	<ul> \
+		<li> <p> 闵可夫斯基距离（\\(p\\ge 1\\)）：</p> \
+		$$ \\text{dist}_{\\rm mk}(x_i,x_j)=\\left\( \\sum_{u=1}^n{\\left| x_{iu}-x_{ju} \\right|^p} \\right\)^{\\frac{1}{p}} $$ </li> \
+		<li> <p> 曼哈顿距离（\\(p=1\\)）： </p> \
+		$$ \\text{dist}_{\\rm man}(x_i,x_j)=\\left\\|x_i-x_j\\right\\|_1=\\sum_{u=1}^n{|x_{iu}-x_{ju}|} $$ </li> \
+		<li> <p> 欧氏距离（\\(p=2\\)）： </p> \
+		$$ \\text{dist}_{\\rm ed}(x_i,x_j)=\\left\\|x_i-x_j\\right\\|_2=\\sqrt{\\sum_{u=1}^n{(x_{iu}-x_{ju})^2}} $$ </li> \
+		<li> <p> 切比雪夫距离（\\(p=+\\infty\\)）： </p> \
+		$$ \\text{dist}_{\\rm cheb}(x_i,x_j)=\\left\\|x_i-x_j\\right\\|_{+\\infty}=\\max_{1\\le u\\le n}{|x_{iu}-x_{ju}|} $$ </li> \
+		<li> <p> 加权闵可夫斯基距离： </p> \
+		$$ \\text{dist}_{\\rm wmk}(x_i,x_j)=\\left\( \\sum_{u=1}^n{w_u|x_{iu}-x_{ju}|^p} \\right\)^{\\frac{1}{p}} $$ \
+		<p> 其中通常权重\\(w_i\\ge 0, \\sum_{i=1}^n{w_i}=1\\) </p> </li> \
+		<li> 无序属性距离VDM（Value Difference Metric）： </p> \
+		<p> 令\\(m_{u,a}\\)表示属性\\(u\\)上取值为\\(a\\)的样本数，\\(m_{u,a,i}\\)表示在第\\(i\\)个样本簇中在属性上取值为\\(a\\)的样本数，\\(k\\)为样本簇数，则属性\\(u\\)上两个离散值\\(a\\)和\\(b\\)之间VDM为 </p> \
+		$$ \\text{VDM}_p(a,b)=\\sum_{i=1}^k{\\left| \\frac{m_{u,a,i}}{m_{u,a}}-\\frac{m_{u,b,i}}{m_{u,b}} \\right|^p} $$ </li> \
+		<li> <p> 混合属性距离（闵可夫斯基+VDM）：</p> \
+		$$ \\text{MinkovDM}_p(x_i,x_j) = \\left\( \\sum_{u=1}^{n_c}{|x_{iu}-x_{ju}|^p} + \\sum_{u=n_c+1}^n{\\text{VDM}_p(x_{iu},x_{ju})} \\right\)^{\\frac{1}{p}} $$ \
+		<p> 其中有\\(n_c\\)个有序属性，\\(n-n_c\\)个无序属性 </p> </li> \
+		<li> <p> 非度量距离： </p> \
+		<p> 距离不满足直递性：\\(\\text{dist}(x_i,x_j)\\nleq\\text{dist}(x_i,x_k)+\\text{dist}(x_k,x_j)\\) </p> \
+		<p> 通过基于数据样本的距离度量学习来实现 </p> </li> \
+	</ul> \
+	<h3> 性能度量 </h3> \
+	<p> 对数据集\\(D=\\\{x_1,x_2,\\cdots,x_m \\\}\\)，假定通过聚类给出的簇划分为\\(C=\\\{C_1,C_2,\\cdots,C_k\\\}\\)，参考模型给出的簇划分为\\(C^*=\\\{C_1^*,C_2^*,\\cdots,C_k^*\\\}\\)；相应地令\\(\\lambda,\\lambda^*\\)分别表示\\(C,C^*\\)对应的簇标记向量。考虑样本两两配对\\((x_i,x_j),i&lt;j\\)： </p> \
+	<table style='text-align:center;' cellpadding='5px'> \
+		<tr style='border-top:1px solid #000000;border-bottom:1px solid #000000'> <td style='border-right:1px solid #000000'> </td> <td> \\(\\lambda_i=\\lambda_j\\) </td> <td> \\(\\lambda_i\\neq\\lambda_j\\) </td> </tr> \
+		<tr> <td style='border-right:1px solid #000000'> \\(\\lambda^*_i=\\lambda^*_j\\) </td> <td> \\(a\\) </td> <td> \\(c\\) </td> </tr> \
+		<tr style='border-bottom:1px solid #000000;'> <td style='border-right:1px solid #000000'> \\(\\lambda^*_i\\neq\\lambda^*_j\\) </td> <td> \\(b\\) </td> <td> \\(d\\) </td> </tr> \
+	</table> \
+	<p> 其中\\( a+b+c+d=\\frac{m(m-1)}{2} \\) </p> \
+	<ul> \
+		<li> <p> 外部指标：将聚类结果与某个参考模型进行比较（值域\\([0,1]\\)，值越大越好） </p> \
+		<ul> \
+			<li> <p> Jaccard系数： </p> \
+			$$ \\text{JC}=\\frac{a}{a+b+c} $$ </li> \
+			<li> <p> FM指数： </p> \
+			$$ \\text{FMI}=\\sqrt{\\frac{a}{a+b}\\cdot\\frac{a}{a+c}} $$ </li> \
+			<li> <p> Rand指数： </p> \
+			$$ \\text{RI}=\\frac{2(a+d)}{m(m-1)} $$ </li> \
+		</ul> </li> \
+		<li> <p> 内部指标：直接考虑聚类结果而不利用任何参考模型 </p> \
+		<ul> \
+			<li> <p> 簇内平均距离： </p> \
+			$$ \\text{avg}(C)=\\frac{2}{|C|(|C|-1)}\\sum_{1\\le i\\le j\\le|C|}{\\text{dist}(x_i,x_j)} $$ </li> \
+			<li> <p> 簇内样本间最远距离： </p> \
+			$$ \\text{diam}(C)=\\max_{1\\le i\\le j\\le|C|}{\\text{dist}(x_i,x_j)} $$ </li> \
+			<li> <p> 簇间最近样本距离： </p> \
+			$$ d_{\\rm min}(C_i,C_j)=\\min_{x_i\\in C_i,x_j\\in C_j}{\\text{dist}(x_i,x_j)} $$ </li> \
+			<li> <p> 簇间中心点距离： </p> \
+			$$ \\begin{align} d_{\\rm cen}(C_i,C_j) &= \\text{dist}(\\mu_i,\\mu_j) \\\\ \\mu &= \\frac{1}{|C|}\\sum_{1\\le i\\le|C|}{x_i} \\end{align} $$ </li> \
+			<li> <p> DB指数（值越小越好）： </p> \
+			$$ \\text{DBI}=\\frac{1}{k}\\sum_{i=1}^k{\\max_{j\\neq i}{\\left\( \\frac{\\text{avg}(C_i)+\\text{avg}(C_j)}{d_{\\rm cen}(C_i,C_j)} \\right\)}} $$ </li> \
+			<li> <p> Dunn指数（值越大越好）： </p> \
+			$$ \\text{DI}=\\min_{1\\le i\\le k}{\\left\\\{ \\min_{j\\neq i}{\\left\( \\frac{d_{\\rm min}(C_i,C_j)}{\\max_{1\\le l\\le k}{\\text{diam}(C_l)}} \\right\)} \\right\\\}} $$ </li> \
+		</ul> \
+	</ul> \
+	<h3> K均值（K-Means） </h3> \
+	<p> 最小化平方误差 </p> \
+	$$ E=\\sum_{i=1}^k{\\sum_{x\\in C_i}{\\left\\|x-\\mu_i\\right\\|_2^2}} $$ \
+	<p> 由于问题是NP难的，一般采用贪心策略 </p> \
+	<table cellpadding='5px' width='100%'> \
+		<tr style='border-top:2px solid #000000; border-bottom:1px solid #000000;'> \
+		<td> 算法：</td> \
+		<td> K均值聚类 </td> \
+		</tr> <tr style='border-bottom:1px solid #000000;'> \
+		<td style='vertical-align:top; width:60px;'> 输入： </td> <td> \
+			样本集\\(D=\\\{ x_1,x_2,\\cdots,x_m \\\}\\) <br/> \
+			聚类簇数\\(k\\) <br/> \
+		</td> \
+		</tr> <tr style='border-bottom:1px solid #000000;'> <td colspan='2'> \
+			从\\(D\\)中随机取出\\(k\\)个样本作为初始均值向量\\( \\\{\\mu_1,\\mu_2,\\cdots,\\mu_k\\\} \\) <br/> \
+			<code>repeat</code> <br/> \
+			<code>&emsp;&emsp;&emsp; </code>令\\(C_i=\\varnothing\\\ (1\\le i\\le k)\\) <br> \
+			<code>&emsp;&emsp;&emsp; for </code>\\( j=1,2,\\cdots,m \\)<code> do</code> <br/> \
+			<code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; </code>\\( i^*=\\mathop{\\arg\\min}_{1\\le i\\le k}{\\left\\|x_j-\\mu_i\\right\\|_2} \\) <br/> \
+			<code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; </code>\\( C_{i^*}=C_{i^*}\\cup\\\{x_j\\\} \\) <br/> \
+			<code>&emsp;&emsp;&emsp; for </code>\\( i=1,2,\\cdots,k \\)<code> do</code> <br/> \
+			<code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; </code>\\( \\mu_i^{'}=\\frac{1}{|C_i|}\\sum_{x\\in C_i}{x} \\) <br/> \
+			<code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; if </code>\\( \\mu_i\\neq\\mu_i^{'} \\)<code> then </code> <br/> \
+			<code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; </code>\\( \\mu_i=\\mu_i^{'} \\)，并标记更新 <br/> \
+			<code>until </code>均值向量未更新 <br/> \
+		</td> </tr> <tr style='border-bottom:1px solid #000000;'> \
+		<td> 输出： </td> \
+		<td> \\( C=\\\{C_1,C_2,\\cdots,C_k\\\} \\) </td> \
+		</tr> \
+	</table> \
+	<h3> 学习向量量化（Learning Vector Quantization，LVQ） </h3> \
+	<p> 数据样本带有标记，寻找一组原型向量刻画聚类结构 </p> \
+	<table cellpadding='5px' width='100%'> \
+		<tr style='border-top:2px solid #000000; border-bottom:1px solid #000000;'> \
+		<td> 算法：</td> \
+		<td> LVQ </td> \
+		</tr> <tr style='border-bottom:1px solid #000000;'> \
+		<td style='vertical-align:top; width:60px;'> 输入： </td> <td> \
+			样本集\\(D=\\\{ (x_1,y_1),(x_2,y_2),\\cdots,(x_m,y_m) \\\}\\) <br/> \
+			原型向量个数\\(q\\)，各原型向量预设的类别标记\\(\\\{\\gamma_1,\\gamma_2,\\cdots,\\gamma_q\\\}\\) <br/> \
+			学习率\\(\\eta\\in(0,1)\\) \
+		</td> \
+		</tr> <tr style='border-bottom:1px solid #000000;'> <td colspan='2'> \
+			初始化一组原型向量\\(\\\{p_1,p_2,\\cdots,p_q\\\}\\) <br/> \
+			<code>repeat</code> <br/> \
+			<code>&emsp;&emsp;&emsp; </code>从样本集随机选取样本\\((x_j,y_j)\\) <br/> \
+			<code>&emsp;&emsp;&emsp; </code>\\( i^*=\\mathop{\\arg\\min}_{1\\le i\\le q}{\\left\\|x_j-p_i\\right\\|_2} \\) <br/> \
+			<code>&emsp;&emsp;&emsp; if </code>\\( y_j=\\gamma_{i^*} \\)<code> then</code> <br/> \
+			<code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; </code>\\( p^{'}=p_{i^*}+\\eta\\left\( x_j-p_{i^*} \\right\) \\) <br/> \
+			<cpde>&emsp;&emsp;&emsp; else</code> <br/> \
+			<code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; </code>\\( p^{'}=p_{i^*}-\\eta\\left\( x_j-p_{i^*} \\right\) \\) <br/> \
+			<cpde>&emsp;&emsp;&emsp; </code>\\( p_{i^*}=p^{'} \\) <br/> \
+			<code>until </code>达到最大迭代轮数<code> or </code>原型向量更新很小 <br/> \
+		</td> </tr> <tr style='border-bottom:1px solid #000000;'> \
+		<td> 输出： </td> \
+		<td> \\( \\\{p_1,p_2,\\cdots,p_k\\\} \\) </td> \
+		</tr> \
+	</table> \
+	<p> 原理：若\\(p_{i^*}\\)与\\(x_j\\)类别标记相同，则令\\(p_{i^*}\\)靠近\\(x_j\\)；否则令\\(p_{i^*}\\)远离\\(x_j\\) </p> \
+	<p> 由此也形成了对样本空间\\(\\mathcal{X}\\)的簇划分\\(\\\\{R_1,R_2,\\cdots,R_q\\\}\\)（Voronoi剖分），其中 </p> \
+	$$ R_i=\\left\\\{ x\\in\\mathcal{X} &emsp; \\left| &emsp; \\left\\|x-p_i\\right\\|_2\\le\\left\\|x-p_j\\right\\|_2,&ensp;i\\neq j \\right. \\right\\\} $$ \
+	<h3> 高斯混合（Mixture-of-Gaussian） </h3> \
+	<p> \\(n\\)维空间服从高斯分布的向量\\(x\\)的概率密度函数为 </p> \
+	$$ p(x)=\\frac{1}{(2\\pi)^{n/2}|\\Sigma|^{1/2}}e^{-\\frac{1}{2}(x-\\mu)^\\top\\Sigma^{-1}(x-\\mu)} $$ \
+	<p> 其中\\(\\mu\\)是\\(n\\)维均值向量，\\(\\Sigma\\)是\\(n\\times n\\)的协方差矩阵。定义高斯混合分布为 </p> \
+	$$ p_{\\mathcal{M}}(x)=\\sum_{i=1}^k{\\alpha_i\\cdot p(x|\\mu_i,\\Sigma_i)} $$ \
+	<p> 该分布由\\(k\\)个混合成分组成，每个成分对应一个高斯分布，\\(\\alpha_i>0\\)为相应的混合系数，且\\(\\sum_{i=1}^k{\\alpha_i}=0\\) </p> \
+	<p> EM算法：不断轮流迭代E步（更新隐变量\\(\\gamma_{ji}\\)）和M步（更新参数\\(\\mu_i,\\Sigma_i,\\alpha_i\\)） </p> \
+	<ul> \
+		<li> <p> E步：令随机变量\\(z_j\\in\\\{1,2,\\cdots,k\\\}\\)表示生成样本\\(x_j\\)的高斯混合成分下标，则\\(z_j\\)的后验分布对应于 </p> \
+		$$ \\gamma_{ji}=p_{\\mathcal{M}}(z_j=i|x_j)=\\frac{P(z_j=i)\\cdot p_{\\mathcal{M}}(x_j|z_j=i)}{p_{\\mathcal{M}}(x_j)}=\\frac{\\alpha_i\\cdot p(x_j|\\mu_i,\\Sigma_i)}{\\sum_{l=1}^k{\\alpha_l\\cdot p(x_j|\\mu_l,\\Sigma_l)}} $$ \
+		<p> 当高斯分布已知时，每个样本的簇标记为 </p> \
+		$$ \\gamma_j=\\mathop{\\arg\\max}_{i\\in \\\{1,2,\\cdots,k\\\}}{\\gamma_{ji}} $$ </li> \
+		<li> <p> M步：对于模型参数，给定样本集\\(D\\)，采用极大似然估计，即最大化对数似然 </p> \
+		$$ LL(D)=\\ln{\\left\( \\prod_{j=1}^m{p_{\\mathcal{M}}(x_j)} \\right\)} = \\sum_{j=1}^m{\\ln{\\left\( \\sum_{i=1}^k{\\alpha_i\\cdot p(x_j|\\mu_i,\\Sigma_i)} \\right\)}} $$ \
+		<p> 对\\(\\mu_i,\\Sigma_i\\)求偏导为零可得 </p> \
+		$$ \\begin{align} \\mu_i &= \\frac{\\sum_{j=1}^m{\\gamma_{ji}x_j}}{\\sum_{j=1}^m{\\gamma_{ji}}} \\\\ \
+		\\Sigma_i &= \\frac{\\sum_{j=1}^m{\\gamma_{ji}(x_j-\\mu_i)(x_j-\\mu_i)^\\top}}{\\sum_{j=1}^m{\\gamma_{ji}}} \\end{align} $$ \
+		<p> 对于混合系数\\(\\alpha_i\\)还需满足初始条件，考虑拉格朗日形式：\\(LL(D)+\\lambda\\left\(\\left\(\\sum_{i=1}^k{\\alpha_i}\\right\)-1\\right\)\\)，对\\(\\alpha_i\\)求偏导\\(=0\\)得到 </p> \
+		$$ \\left\(\\sum_{j=1}^m{\\frac{p(x_j|\\mu_i,\\Sigma_i)}{\\sum_{l=1}^k{\\alpha_l\\cdot p(x_j|\\mu_l,\\Sigma_l)}}}\\right\)+\\lambda=0 $$ \
+		<p> 两边同乘\\(\\alpha_i\\)，再对所有\\(\\alpha_i\\)求和可得\\(\\lambda=-m\\)，则有 </p> \
+		$$ \\alpha_i=\\frac{1}{m}\\sum_{j=1}^m{\\gamma_{ji}} $$ \
+	</ul> \
+	<h4> EM算法 </h4> \
+	<p> 针对有不完整（未观测）训练样本的情况，估计参数隐变量的迭代式方法： </p> \
+	<ul> \
+		<li> <p> E步（Expectation）：以当前参数\\(\\Theta^t\\)推断因变量分布\\(P(Z|X,\\Theta^t)\\)，并计算对数似然关于隐变量\\(Z\\)的期望 </p> \
+		$$ Q(\\Theta|\\Theta^t)=\\mathbb{E}_{Z|X,\\Theta^t}(\\Theta|X,Z) $$ </li> \
+		<li> <p> M步（Maximization）：若\\(Z\\)的值已知，则方便地对参数Θ做极大似然估计 </p> \
+		$$ \\Theta^{t+1}=\\mathop{\\arg\\max}_{\\Theta}{Q(\\Theta|\\Theta^t)} $$ </li> \
+	</ul> \
 ";
