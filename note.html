@@ -14,6 +14,7 @@
   <!-- Notes -->
   <script src="./note_files/computer_graphics/computer_graphics.js"></script>
   <script src="./note_files/parallel_programming/parallel_programming.js"></script>
+  <script src="./note_files/machine_learning/machine_learning.js"></script>
 
   <script>
   function window_resize() {
@@ -105,10 +106,10 @@
   }
 
   function load_page(page_name) {
-  	//var page = str_computer_graphics;
-  	var page = str_parallel_programming;
+  	var page = str_machine_learning;
   	if (page_name == 'computer_graphics') page = str_computer_graphics;
   	if (page_name == 'parallel_programming') page = str_parallel_programming;
+  	if (page_name == 'machine_learning') page = str_machine_learning;
   	$("#main").html(page);
   	$("#bookmark").empty();
   	var divs = new Array($("#bookmark"));
@@ -168,14 +169,14 @@
   		margin-top: 5px;
   		margin-bottom: 5px;
   	}
+  	ol, ul, li {
+  		margin-left: -10px;
+  	}
   	.table_padding10 {
   		padding-right: 10px;
   	}
   	.table_padding20 {
   		padding-right: 20px;
-  	}
-  	ul, li {
-  		margin-left: -10px;
   	}
   	.script10 {
   		font-size: 10px;
@@ -202,16 +203,16 @@
     <li class="nav-item">
       <a class="nav-link dropdown-toggle font-color-black" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Artificial Intelligence</a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">机器学习</a>
+        <a class="dropdown-item" onclick="load_page('machine_learning')">机器学习</a>
         <a class="dropdown-item" href="#">深度学习</a>
-        <!--<div class="dropdown-divider"></div>-->
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link font-color-black" onclick="load_page('parallel_programming')">Parallel Programming</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link font-color-black" href="#three">Psychology</a>
+      <a class="nav-link dropdown-toggle font-color-black" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Others</a>
+      <div class="dropdown-menu">
+      	<a class="dropdown-item" onclick="load_page('parallel_programming')">Parallel Programming</a>
+        <div class="dropdown-divider"></div>
+      	<a class="dropdown-item" href="#three">Psychology</a>
     </li>
   </ul>
   </div>
