@@ -668,9 +668,9 @@ var str_machine_learning = "\
 			<code>&emsp;&emsp;&emsp; </code>\\( i^*=\\mathop{\\arg\\min}_{1\\le i\\le q}{\\left\\|x_j-p_i\\right\\|_2} \\) <br/> \
 			<code>&emsp;&emsp;&emsp; if </code>\\( y_j=\\gamma_{i^*} \\)<code> then</code> <br/> \
 			<code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; </code>\\( p^{'}=p_{i^*}+\\eta\\left\( x_j-p_{i^*} \\right\) \\) <br/> \
-			<cpde>&emsp;&emsp;&emsp; else</code> <br/> \
+			<code>&emsp;&emsp;&emsp; else</code> <br/> \
 			<code>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; </code>\\( p^{'}=p_{i^*}-\\eta\\left\( x_j-p_{i^*} \\right\) \\) <br/> \
-			<cpde>&emsp;&emsp;&emsp; </code>\\( p_{i^*}=p^{'} \\) <br/> \
+			<code>&emsp;&emsp;&emsp; </code>\\( p_{i^*}=p^{'} \\) <br/> \
 			<code>until </code>达到最大迭代轮数<code> or </code>原型向量更新很小 <br/> \
 		</td> </tr> <tr style='border-bottom:1px solid #000000;'> \
 		<td> 输出： </td> \

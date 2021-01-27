@@ -15,6 +15,7 @@
   <script src="./note_files/computer_graphics/computer_graphics.js"></script>
   <script src="./note_files/parallel_programming/parallel_programming.js"></script>
   <script src="./note_files/machine_learning/machine_learning.js"></script>
+  <script src="./note_files/psychology/psychology.js"></script>
 
   <script>
   function window_resize() {
@@ -29,7 +30,7 @@
 
   $(document).ready(function() {
   	window_resize();
-  	load_page('');
+  	load_note('psychology');
   });
 
   function update_sign(node, is_open) {
@@ -105,11 +106,7 @@
 	}
   }
 
-  function load_page(page_name) {
-  	var page = str_machine_learning;
-  	if (page_name == 'computer_graphics') page = str_computer_graphics;
-  	if (page_name == 'parallel_programming') page = str_parallel_programming;
-  	if (page_name == 'machine_learning') page = str_machine_learning;
+  function load_page(page) {
   	$("#main").html(page);
   	$("#bookmark").empty();
   	var divs = new Array($("#bookmark"));
@@ -137,6 +134,16 @@
 
    	MathJax.typeset();
   }
+
+  function load_note(note_name) {
+  	var page = 'hello world';
+  	if (note_name == 'computer_graphics') page = str_computer_graphics;
+  	if (note_name == 'parallel_programming') page = str_parallel_programming;
+  	if (note_name == 'machine_learning') page = str_machine_learning;
+  	if (note_name == 'psychology') page = str_psychology;
+  	load_page(page);
+  }
+
   </script>
 
   <style>
@@ -165,9 +172,9 @@
   		margin-bottom: 10px;
   	}
   	p {
-  		line-height: 1;
-  		margin-top: 5px;
-  		margin-bottom: 5px;
+  		line-height: 1.2;
+  		margin-top: 8px;
+  		margin-bottom: 8px;
   	}
   	ol, ul, li {
   		margin-left: -10px;
@@ -189,30 +196,30 @@
 <body>
   <div style="width:100%; position: fixed; z-index:2; background-color:#aaaaaa; font-size:20px" id="header">
   <ul class="nav nav-tabs" style="padding: 5px 1px 5px 20px;" id="navv">
-  	<li class="nav-item">
-  	  <a class="nav-link disabled" style="color:#000000;">Note</a>
+  	<li class="nav-item" style='border-right:1px solid #000000;margin-right:20px'>
+  	  <a class="nav-link disabled" style="color:#000000;font-weight:900">Note</a>
   	</li>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle font-color-black" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Computer Graphics</a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" onclick="load_page('computer_graphics')">图形学基础 @ GAMES 101</a>
-        <a class="dropdown-item" onclick="load_page()">几何</a>
+        <a class="dropdown-item" onclick="load_note('computer_graphics')">Computer Graphics</a>
+        <a class="dropdown-item" href='#'>几何</a>
         <!--<div class="dropdown-divider"></div>-->
       </div>
     </li>
     <li class="nav-item">
       <a class="nav-link dropdown-toggle font-color-black" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Artificial Intelligence</a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" onclick="load_page('machine_learning')">机器学习</a>
+        <a class="dropdown-item" onclick="load_note('machine_learning')">机器学习</a>
         <a class="dropdown-item" href="#">深度学习</a>
       </div>
     </li>
     <li class="nav-item">
       <a class="nav-link dropdown-toggle font-color-black" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Others</a>
       <div class="dropdown-menu">
-      	<a class="dropdown-item" onclick="load_page('parallel_programming')">Parallel Programming</a>
+      	<a class="dropdown-item" onclick="load_note('parallel_programming')">Parallel Programming</a>
         <div class="dropdown-divider"></div>
-      	<a class="dropdown-item" href="#three">Psychology</a>
+      	<a class="dropdown-item" onclick="load_note('psychology')">Psychology</a>
     </li>
   </ul>
   </div>
