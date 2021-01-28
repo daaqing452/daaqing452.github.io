@@ -258,4 +258,5 @@ var str_psychology = "\
 		<p> -&emsp;  Even some nonverbal children can pass False Belief Task </p> \
 		<p> -&emsp; Animals can understand 1+1=2 </p> </li> \
 	</ul> \
+	<h2> Cognition </h2> \
 ";
