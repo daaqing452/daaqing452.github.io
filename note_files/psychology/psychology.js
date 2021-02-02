@@ -12,7 +12,6 @@ var str_psychology = "\
 		<li> Cerebrum (大脑): responsible for cognitive abilities and conscious experience </li> \
 	</ul> \
 	<h4> Cerebral Hemisphere </h4> \
-	<p> Cerebrum contains two cerebral hemispheres, connected by dense corpus callosum (胼胝体) </p> \
 	<ul> \
 		<li> <p> Cerebrum contains two cerebral hemispheres, connected by dense corpus callosum (胼胝体) </p> \
 		<p> Topographical map: two things that are close together in the body are similarly close together in brain (e.g., elbow & finger); the size of brain areas doesn't correspond to the size of the actual body areas </p> </li> \
@@ -57,7 +56,7 @@ var str_psychology = "\
 	<p> The ratio (sensitivity) on the cortex corresponding to different parts of the body </p> \
 	<img width='600px' src='note_files/psychology/brain_2.png'/> &emsp;&emsp; \
 	<img width='300px' src='note_files/psychology/brain_3.png'/> \
-	<h2> Freud's Theory </h2> \
+	<h2> [Freud's Theory] </h2> \
 	<p> Unconscious Motivation: unconscious reason for feelings and actions </p> \
 	<p> Unconscious Dynamics: conflict between different systems in the brain </p> \
 	<h3> Psychoanalytic (精神分析) Divisions of the Mind </h3> \
@@ -106,7 +105,7 @@ var str_psychology = "\
 		<li> Dream interpretation (解梦): distinguish latent (隐性) dream from manifest (显性) dream </li> \
 		<li> Transference (移情): transfer positive or negative emotion to the doctor, reproduce the past emotion </li> \
 	</ul> \
-	<h2> Skinner's Theory: Behaviorism (行为主义) </h2> \
+	<h2> [Skinner's Theory] Behaviorism </h2> \
 	<ul> \
 		<li> Emphasis on learning: strong rejection of innate ideas or traits </li> \
 		<li> Anti-Mentalism (反唯心主义): support real science, away from unscientific things (e.g., Freud) </li> \
@@ -158,12 +157,12 @@ var str_psychology = "\
 		<li style='color:#ff0000'> <p> If you reward someone every time, when stop, the behavior will go away quickly </p> \
 		<p> To make a behavior last long, reinforce partially & intermittently (fixed/variable ratio/interval schedule) </p> </li> \
 	</ul> \
-	<h2> Piaget's Theory: Development Psychology </h2> \
+	<h2> [Piaget's Theory] Development Psychology </h2> \
 	<p> Big questions: </p> \
 	<ul> \
 		<li> Morality: children start with good or bad morality? </li> \
 		<li> Continuity: the difference between children and adults? </li> \
-		<li> <p> Knowledge: how much we are born with / we have to learn? </p> \
+		<li> <p> Knowledge: how much people are born with / people have to learn? </p> \
 		<ul> \
 			<li> Empiricism (经验主义): start from empty and learn </li> \
 			<li> Nativism (天赋主义): born with rich powerful structure system </li> \
@@ -259,4 +258,66 @@ var str_psychology = "\
 		<p> -&emsp; Animals can understand 1+1=2 </p> </li> \
 	</ul> \
 	<h2> Cognition </h2> \
+	<h3> Perception </h3> \
+	<h4> Perception of Brightness </h4> \
+	<p> Eye receives light and encode into several stimuli (neuron firing) </p> \
+	<p> The brain compensates the color in environments (e.g, visual deception: shadow makes surfaces lighter than its original color) </p> \
+	<h4> Perception of Objects </h4> \
+	<p> Principles that lead human to segment one object from another: </p> \
+	<ul> \
+		<li> Proximity: objects that are close together tend to be distinct from other objects </li> \
+		<li> Similarity: objects with different patterns tend to be distinct </li> \
+		<li> Good form: e.g., closure (objects with its natural form), symmetry </li> \
+		<li> Continuation: e.g., common movement </li> \
+		<li> Illusion: e.g., complementary shape </li> \
+	</ul> \
+	<img height='100px' src='note_files/psychology/perception_of_objects_0.png'/> &emsp;&emsp; \
+	<img height='100px' src='note_files/psychology/perception_of_objects_1.png'/> &emsp;&emsp; \
+	<img height='100px' src='note_files/psychology/perception_of_objects_2.png'/> &emsp;&emsp; \
+	<img height='80px' src='note_files/psychology/perception_of_objects_3.png'/> &emsp;&emsp; \
+	<img height='100px' src='note_files/psychology/perception_of_objects_4.png'/> \
+	<p class='script10'> <span style='margin-left:45px'> Proximity </span> <span style='margin-left:115px'> Similarity </span> <span style='margin-left:120px'> Closure </span> <span style='margin-left:110px'> Comtinuation </span> <span style='margin-left:58px'> Complementary shape </span> </p> \
+	<h4> Perception of Depth </h4> \
+	<p> Inference 3D scenes from 2D array </p> \
+	<ul> \
+		<li> Knowing the size of objects </li> \
+		<li> Interposition: e.g., occulusion relation </li> \
+		<li> Illusion: e.g., depth cue </li> \
+	</ul> \
+	<h3> Attention </h3> \
+	<p> Attention gets information from sensory memory to working memory to consciousness </p> \
+	<ul> \
+		<li> <a href='#_Selective_Attention_'> Selective attention </a>: the ability to select certain stimuli in the environment to process, while ignoring distracting information </li> \
+		<li> Divided attention: the ability to flexibly allocate attentional resources between two or more concurrent tasks  </li> \
+		<li> Sustained attention (vigilance (谨小慎微)): remain highly alert and accurate to monitor anomaly or emergency </li> \
+		<li> Spatial attention: how humans focus on one part of our environment and how humans move attention to other locations in the environment </li> \
+	</ul> \
+	<h3> Selective Attention </h3> \
+	The ability to select certain stimuli in the environment to process, while ignoring distracting information \
+	<h4> Dichotic Listening Study </h4> \
+	Two messages are presented simultaneously to an individual, with one message in each ear; to control which message the person attends to, the individual is asked to repeat back or \"shadow\" one of the messages \
+	<ul style='list-style-type: circle'> \
+		<li> People can become pretty good at the shadowing task, and they can easily report the content of the message that they attend to </li> \
+		<li> People can also tell physical characteristics of the shadowed task (e.g., man/woman voice, pitch), but cannot tell the content (e.g., the switch of languages) </li> \
+		<li> Tasks for vision: two transparent &amp; overlapping videos </li> \
+	</ul> \
+	<h4> Models of Selection Attention </h4> \
+	<ul> \
+		<li> <p> Broadbent’s Filter Model: </p> \
+		<p> People seemed vaguely aware of the physical features of the unattended information, but had no knowledge of the meaning </p> \
+		<p> Selection occurs very early, with no additional processing for the unselected information </p> \
+		<img width='400px' src='note_files/psychology/selective_attention_0.png'/></li> \
+		<li> <p> Treisman’s Attenuation Model </p> \
+		<p> People tend to hear meaningful information even when you aren’t paying attention to it, suggest that people do monitor the unattended information to some degree on the basis of its meaning </p> \
+		<p> Selection starts at the physical or perceptual level, but that the unattended information is not blocked completely, it is just weakened or attenuated </p> \
+		<img width='400px' src='note_files/psychology/selective_attention_1.png'/></li> \
+		<li> <p> Late Selection Models </p> \
+		<p> All information in the unattended ear is processed on the basis of meaning, not just the selected or highly pertinent information </p> \
+		<p> Only the information that is relevant for the task response gets into conscious awareness </p> \
+		<p> <b>Subliminal perception</b>: stimuli presented below the threshold for awareness can influence thoughts, feelings, or actions </p> \
+		<img width='400px' src='note_files/psychology/selective_attention_2.png'/></li> \
+		<li> <p> Multimode Model </p> \
+		<p> The stage at which selection occurs can change depending on the task </p> \
+		<p> People have the flexibility to change how they deploy their attention depending upon what they are trying to accomplish </p> </li> \
+	</ul> \
 ";
