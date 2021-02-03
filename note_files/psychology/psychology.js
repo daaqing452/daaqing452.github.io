@@ -100,7 +100,7 @@ var str_psychology = "\
 	<p> Eye receives light and encode into several stimuli (neuron firing) </p> \
 	<p> The brain compensates the color in environments (e.g, visual deception: shadow makes surfaces lighter than its original color) </p> \
 	<h4> Perception of Objects </h4> \
-	<p> Principles that lead human to segment one object from another: </p> \
+	<p> Gestalt principles: lead human to segment one object from another </p> \
 	<ul> \
 		<li> Proximity: objects that are close together tend to be distinct from other objects </li> \
 		<li> Similarity: objects with different patterns tend to be distinct </li> \
@@ -118,8 +118,8 @@ var str_psychology = "\
 	<p> Inference 3D scenes from 2D array </p> \
 	<ul> \
 		<li> Knowing the size of objects </li> \
-		<li> Interposition: e.g., occulusion relation </li> \
-		<li> Illusion: e.g., depth cue </li> \
+		<li> Inter-position: e.g., occulusion relation </li> \
+		<li> Illusion: e.g., depth cues </li> \
 	</ul> \
 	<h3> Attention </h3> \
 	<p> Attention gets information from sensory memory to working memory to consciousness </p> \
@@ -170,18 +170,80 @@ var str_psychology = "\
 		<li class='multili'> Not everyone could learn to perform two complex tasks without performance costs </li> \
 	</ul> \
 	<h3> Memory </h3> \
-	<ul style='list-style-type: circle'> \
-		<li> Explicit memory: what people consciously know (e.g., name) </li> \
-		<li> Implicit memory: what people may not be conscious of (e.g., familiar with some places which are forgetten) </li> \
-	</ul> \
 	<ul> \
-		<li> Encoding: get information into memory </li> \
-		<li> Storage: keep information in memory </li> \
-		<li> Retrieval: get information out of memory \
+		<li> <b>Episodic Memory</b> (<b>情景记忆</b>): the ability to remember the episodes of our lives (e.g., recall everything did 2 days ago) </li> \
+		<li> <b>Semantic Memory</b> (<b>语义记忆</b>): storehouse of more-or-less permanent knowledge (e.g., meaning of words in language) </li> \
+		<li> <b>Collective Memory</b> (<b>集体记忆</b>): the kind of memory that people in a group share (e.g., town names) </li> \
+		<li> <b>Autobiographical Memory</b> (<b>自传体记忆</b>): specific events that have happened over the course of one's entire life (e.g., experiences in sixth grade) </li> \
+		<li> <b>Flashbulb Memory</b>: memory with strong emotional content and permanent mark; distinctiveness (e.g., terrorist attacks) </li> \
+	</ul> \
+	<h4> Memory Storage </h4> \
+	<img width='500px' src='note_files/psychology/memory.png'/> \
+	<ul> \
+		<li class='multili'> <b>Sensory Memory</b>: very short-term storage (e.g., afterimage after closing eyes; last word heard) </li> \
+		<li class='multili'> <b>Short-Term Memory</b> (<b>Working Memory</b>): storage quickly lost; capacity: 7±2 chunks (basic memory unit); with consciousness <br/> \
+		practicing increases the size of chunks (e.g., speakers of a language remember a sentence word by word, non-speakers remembers letter by letter) </li> \
+		<li class='multili'> <b>Long-Term Memory</b>: storage for a long duration; unlimited capacity (people will never reach the limit) </li> \
+	</ul> \
+	<h3> Memory Process </h3> \
+	<ul> \
+		<li> Encoding: the initial learning of information </li> \
+		<li> Storage: maintaining information over time </li> \
+		<li> Retrieval: the ability to access information when you need it </li> \
 		<ul> \
 			<li> Recall: freely recount what people have experienced (e.g., answer someone wore yesterday) </li> \
 			<li> Recognition: choose one from a set of options </li> \
 		</ul> </li> \
+	</ul> \
+	<h4> Encoding (Learning) </h4> \
+	<p> Encoding is selective in complex situations </p> \
+	<p> Recoding: convert information from its delivered form to the way people make sense of it </p> \
+	<p> Strategies: </p> \
+	<ul> \
+		<li> Depth of proccessing: the deeper people think, the more sense get, the easier it is to remember </li> \
+		<li> Relating new information to information already in memory </li> \
+		<li> Mnemonics: build connections to other things (e.g., homophony) </li> \
+		<li> Visual imaging: create vivid images out of information </li> \
+	</ul> \
+	<h4> Storage </h4> \
+	<p> Brain creates memory traces (engrams) to change its physical composition to consolidation experiences </p> \
+	<p> When recalling, brain reconstructs experiences withe the aid of memory trace, instead of reproduction (like records) </p> \
+	<p> Retroactive interference: new activitiesduring the retention intervalthat interfere with retrieving the specific, older memory </p> \
+	<p> Proactive interference: past memories interfere with the encoding of new ones </p> \
+	<h4> Retrieval (Remembering) </h4> \
+	<p> Strategies: </p> \
+	<ul> \
+		<li style='font-color:red'> Retrieval cues: encode information with cues (e.g., objects, ) {very effective} </li> \
+		<li> Compatibility principles (context-dependent memories): recover information in the same context in which one learnt </li> \
+		<li> Searching strategies: explore information from different ends & aspects (or approach step by step) </li> \
+	</ul> \
+	<h3> Failures of Memory </h3> \
+	<h4> Forgetting </h4> \
+	<ul> \
+		<li> Decay: physical patterns in brain (atoms & molecules) are fade over time </li> \
+		<li> Interference: similar information overlay and produce confusion </li> \
+		<li> Change of retrieval cues </li> \
+		<li> Encoding failures </li> \
+		<li> Deliberately attempt to keep them out of mind </li> \
+	</ul> \
+	<h4> Amnesia (失忆症) </h4> \
+	<ul> \
+		<li> Childhood amnesia [2-3 years] </li> \
+		<li> Retrograde amesia (逆行性遗忘): lose memory for some period of time prior to accident </li> \
+		<li> Anterograde amnesia (顺行性遗忘): lose the capacity to form new memories <br/> \
+		Patients cannot form explicit memory, but can form implicit memory by practicing <br/> \
+		<ul> \
+			<li> Explicit memory: what people consciously know (e.g., name, figure) </li> \
+			<li> Implicit memory: what people may not be conscious of (e.g., familiar with some places which are forgetten; skills) </li> \
+		</ul> </li> \
+	</ul> \
+	<h4> False Memory (Misremembering) </h4> \
+	<ul> \
+		<li> Expectation: beliefs about what should be happen will shape memory </li> \
+		<li> Leading question will shape how you remember things (e.g., eyewitness testimony (目击者证词)) </li> \
+		<li> Hypnosis (催眠): questionees cooperate to create memories that seem true to satisfy the questioners </li> \
+		<li> Repressed memories: people intentionally try to forget unpleasant memories </li> \
+		<li> Flashbulb memories: not accurate; memories of significant scenes are more vulnerable to distortions \
 	</ul> \
 	<h2> [Freud's Theory] </h2> \
 	<p> Unconscious Motivation: unconscious reason for feelings and actions </p> \
