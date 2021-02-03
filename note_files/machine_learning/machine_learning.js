@@ -75,7 +75,7 @@ var str_machine_learning = "\
 	</ul> \
 	<h2> 决策树 </h2> \
 	<p> 典型决策树：ID3、C4.5、CART </p> \
-	<table cellpadding='5px' width='100%'> \
+	<table class='explicit' cellpadding='5px' width='100%'> \
 		<tr style='border-top:2px solid #000000; border-bottom:1px solid #000000;'> \
 		<td style='width:60px'> 算法： </td> \
 		<td> TreeGenerate\\((D,A)\\) </td> \
@@ -345,7 +345,7 @@ var str_machine_learning = "\
 			<li> 假设经过\\(T\\)次采样得到与待查询变量\\(q\\)一致的样本数为\\(n_q\\)，则可近似估算出后验概率 </li> \
 			<li> 无论从什么初始状态开始，马尔可夫链第\\(t\\)步的状态分布在\\(t\\rightarrow\\infty\\)时必收敛与一个平稳分布 </li> \
 		</ul> \
-		<table cellpadding='5px' width='100%'> \
+		<table class='explicit' cellpadding='5px' width='100%'> \
 			<tr style='border-top:2px solid #000000; border-bottom:1px solid #000000;'> \
 			<td> 算法：</td> \
 			<td> 贝叶斯网的吉布斯采样 </td> \
@@ -411,7 +411,7 @@ var str_machine_learning = "\
 	H(x) &= \\frac{1}{2}\\ln{\\frac{P(f(x)=1|x)}{P(f(x)=-1|x)}} \\\\ \
 	{\\rm sign}(H(x)) &= \\begin{cases} 1 & P(f(x)=1|x)&gt;P(f(x)=-1|x) \\\\ -1 & P(f(x)=1|x)&lt;P(f(x)=-1|x) \\end{cases} \\end{align} $$ \
 	<p> 即\\({\\rm sign}⁡(H(x))\\)达到了贝叶斯最优错误率 </p> \
-	<table cellpadding='5px' width='100%'> \
+	<table class='explicit' cellpadding='5px' width='100%'> \
 		<tr style='border-top:2px solid #000000; border-bottom:1px solid #000000;'> \
 		<td> 算法：</td> \
 		<td> AdaBoost </td> \
@@ -623,7 +623,7 @@ var str_machine_learning = "\
 	<p> 最小化平方误差 </p> \
 	$$ E=\\sum_{i=1}^k{\\sum_{x\\in C_i}{\\left\\|x-\\mu_i\\right\\|_2^2}} $$ \
 	<p> 由于问题是NP难的，一般采用贪心策略 </p> \
-	<table cellpadding='5px' width='100%'> \
+	<table class='explicit' cellpadding='5px' width='100%'> \
 		<tr style='border-top:2px solid #000000; border-bottom:1px solid #000000;'> \
 		<td> 算法：</td> \
 		<td> K均值聚类 </td> \
@@ -651,7 +651,7 @@ var str_machine_learning = "\
 	</table> \
 	<h3> 学习向量量化（Learning Vector Quantization，LVQ） </h3> \
 	<p> 数据样本带有标记，寻找一组原型向量刻画聚类结构 </p> \
-	<table cellpadding='5px' width='100%'> \
+	<table class='explicit' cellpadding='5px' width='100%'> \
 		<tr style='border-top:2px solid #000000; border-bottom:1px solid #000000;'> \
 		<td> 算法：</td> \
 		<td> LVQ </td> \

@@ -177,7 +177,7 @@ var str_psychology = "\
 	<ul> \
 		<li> Encoding: get information into memory </li> \
 		<li> Storage: keep information in memory </li> \
-		<li> Retrieval：get information out of memory \
+		<li> Retrieval: get information out of memory \
 		<ul> \
 			<li> Recall: freely recount what people have experienced (e.g., answer someone wore yesterday) </li> \
 			<li> Recognition: choose one from a set of options </li> \
