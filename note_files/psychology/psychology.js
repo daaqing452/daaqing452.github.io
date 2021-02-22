@@ -1,7 +1,7 @@
 var str_psychology = "\
 	<h1> Psychology </h1> \
 	<p> [<a href='https://www.coursera.org/learn/introduction-psychology/home/welcome'>Coursera</a>] [<a href='https://nobaproject.com/'>Noba</a>] </p> \
-	<p> Update v0: 2021.01.27 </p> \
+	<p> Update v0: 2021.02.04 </p> \
 	<h2> Brain </h2> \
 	<p> The brain uses oxygen (氧气) and glucose (葡萄糖), delivered by blood </p> \
 	<h3> Brain Anatomy </h3> \
