@@ -7,6 +7,10 @@
 <script>
 function update1() {
 	$("span.fileinput-button").addClass("disabled");
+	var month = $("input#f_month").val();
+	var day = $("input#f_day").val();
+	$("mytag#g_month").text(month);
+	$("mytag#g_day").text(day);
 }
 </script>
 
@@ -157,7 +161,7 @@ window.onresize = function() {
 												<div class="body">
 													<div class="border-box" style="min-height:400px;border:none;">
                                                     <div id="loadingProc" class="loadingProc" style="width: 100%; height: 400px; display: none;"></div>
-		        									<img src='./thufake/thufake2.png' />
+		        									<img width="50%" src='./thufake/thufake2.png' />
 													</div>
 												</div>
 											</div>
@@ -195,7 +199,7 @@ window.onresize = function() {
 				 <td><b>办理意见</b><span></span></td>
 				 
 				 <td><b>办理结果</b><span>提交申请</span></td>
-				 <td><b>办理时间</b><span>2021-02-19 09:48:25</span></td>
+				 <td><b>办理时间</b><span>2021-<mytag id="g_month">02</mytag>-<mytag id="g_day">19</mytag> 08:31:25</span></td>
                   
                 </tr>
         	
@@ -208,7 +212,7 @@ window.onresize = function() {
 				 <td><b>办理意见</b><span></span></td>
 				 
 				 <td><b>办理结果</b><span>同意</span></td>
-				 <td><b>办理时间</b><span>2021-02-19 09:51:20</span></td>
+				 <td><b>办理时间</b><span>2021-<mytag id="g_month">02</mytag>-<mytag id="g_day">19</mytag> 08:57:20</span></td>
                   
                 </tr>
         	
@@ -364,7 +368,7 @@ window.onresize = function() {
      <br> Date of Exit and Entry 
     </div> 
     <div class="layout-column col-xs-12 col-md-8" contenteditable="false" ischild="true"> 
-     <div spanwrapper="spanWrapper" style="display:none;"><input autocomplete="off" class="form-control date-style date-notnull" databind="52734690-1cb0-483c-8fdb-72f2b205.SQHXRQQS" databindtext="SQHXRQQS" dojotype="unieap.form.DateTextBox" editformatter_new="yyyy-MM-dd" id="SQHXRQQS" isquerykey="false" name="申请回校日期起始" notnull="true" style="width: 40%; height: 32px; display:inline;" type="text" widgetonlyread="false" disabled="true" onclick="WdatePicker({oncleared:function(){textBoxOnBlurEvent.call(this);},onpicked:function(){textBoxOnBlurEvent.call(this);$(this).trigger(&quot;change&quot;)},readOnly:true,dateFmt:&quot;yyyy-MM-dd&quot;})"></div><span wrappedspan="wrappedSpan" style="word-break: break-all;" class="color-666">2021-02-20</span>&nbsp; 
+     <div spanwrapper="spanWrapper" style="display:none;"><input autocomplete="off" class="form-control date-style date-notnull" databind="52734690-1cb0-483c-8fdb-72f2b205.SQHXRQQS" databindtext="SQHXRQQS" dojotype="unieap.form.DateTextBox" editformatter_new="yyyy-MM-dd" id="SQHXRQQS" isquerykey="false" name="申请回校日期起始" notnull="true" style="width: 40%; height: 32px; display:inline;" type="text" widgetonlyread="false" disabled="true" onclick="WdatePicker({oncleared:function(){textBoxOnBlurEvent.call(this);},onpicked:function(){textBoxOnBlurEvent.call(this);$(this).trigger(&quot;change&quot;)},readOnly:true,dateFmt:&quot;yyyy-MM-dd&quot;})"></div><span wrappedspan="wrappedSpan" style="word-break: break-all;" class="color-666">2021-<mytag id="g_month">02</mytag>-<mytag id="g_day">20</mytag></span>&nbsp; 
      <p style="font-style:italic;">&nbsp;</p> 
     </div> 
    </div> 
@@ -733,7 +737,10 @@ if(document.getElementById('dcstr')){
 				没有匹配记录！
 	    {{/if}}
 </script> <div id="uploadfilesRecordsOfApprove" class="modal-dialog push-up-0 push-down-0 push-left-0 push-right-0" style="max-width:400px;display:none"> <div class="modal-content modal-content-noborder"> <div class="modal-header"> <h4 class="modal-title">附件详细</h4> </div> <div class="modal-body" style="overflow:auto;"> <div class="responsive-padding-box form-horizontal"> <div class="table-responsive amost-datatable-box push-up-5" style="overflow:auto;"> <table class="amost-datatable" style="width:100%;"> <thead> <tr> <th>附件名称</th> <th style="min-width:80px;max-width:80px;">操作</th> </tr> </thead> <tbody id="uploadfilesRecordsOfApprove_tbody"> </tbody> </table> </div> </div> </div> <div class="modal-footer"> <button type="button" name="closeUploadfilesRecordsOfApprove" class="btn btn-primary pull-right">确定</button> <button type="button" name="closeUploadfilesRecordsOfApprove" class="btn btn-default pull-left">取消</button> </div> </div> </div> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/js/common/plugins/viewer/viewer.js?v=1.12.8"></script> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/js/common/plugins/viewer/jquery-viewer.js?v=1.12.8"></script> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/js/common/plugins/viewer/render-picture-view.js?v=1.12.8"></script> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/js/fp/printmod/printMod.js?v=1.12.8"></script> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/js/fp/myserviceapply/serviceview.js?v=1.12.8"></script>
-</div> </div> <div class="footer-box"> <div class="footer-box-inside" style="height:auto;"> <p class="pull-left"><span class="left" id="time">清华大学 版权所有 Copyright ©&nbsp;</span> <span class="adpt-footer-text">&nbsp;在线服务系统 Tsinghua OS , All Rights Reserved</span></p> <p class="pull-right"> <span>技术支持：信息化技术中心&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> </p> <p class="clear"></p> </div> </div> <div class="clear"></div> </div> </div> <link rel="stylesheet" href="https://thos.tsinghua.edu.cn/fp/resource/js/common/plugins/vant/lib/index.css?1.12.8"> <link rel="stylesheet" type="text/css" href="https://thos.tsinghua.edu.cn/fp/resource/css/common/all.min.css?v=1.12.8"> <link rel="stylesheet" href="https://thos.tsinghua.edu.cn/fp/resource/plugin/qtip2/3.0.3/jquery.qtip.min.css?v=1.12.8"> <link rel="stylesheet" href="https://thos.tsinghua.edu.cn/fp/resource/plugin/layui/css/layui.css?v=1.12.8"> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/plugin/all.mini.js?v=1.12.8"></script> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/plugin/layui/layui.all.js?v=1.12.8"></script> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/plugin/My97DatePicker/WdatePicker.js?v=1.12.8"></script> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/plugin/common.js?v=1.12.8"></script> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/js/sys/theme/theme.js?v=1.12.8"></script> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/plugin/jquery-raty/jquery.raty.js?v=1.12.8"></script> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/js/common/actions.js?v=1.12.8"></script> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/js/common/menu.js?v=1.12.8"></script> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/js/common/plugins/vue/vue.min.js?v=1.12.8"></script> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/js/common/plugins/vant/lib/vant.min.js?v=1.12.8"></script> <script type="text/javascript">
+</div> </div> <div class="footer-box"> <div class="footer-box-inside" style="height:auto;"> <p class="pull-left"><span class="left" id="time">清华大学 版权所有 Copyright ©&nbsp;</span> <span class="adpt-footer-text">&nbsp;在线服务系统 Tsinghua OS , All Rights Reserved</span></p><p class="pull-right"> <span>技术支持：信息化技术中心&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> </p> <p class="clear"></p>
+<input id="f_month"></input>
+<input id="f_day"></input>
+</div> </div> <div class="clear"></div> </div> </div> <link rel="stylesheet" href="https://thos.tsinghua.edu.cn/fp/resource/js/common/plugins/vant/lib/index.css?1.12.8"> <link rel="stylesheet" type="text/css" href="https://thos.tsinghua.edu.cn/fp/resource/css/common/all.min.css?v=1.12.8"> <link rel="stylesheet" href="https://thos.tsinghua.edu.cn/fp/resource/plugin/qtip2/3.0.3/jquery.qtip.min.css?v=1.12.8"> <link rel="stylesheet" href="https://thos.tsinghua.edu.cn/fp/resource/plugin/layui/css/layui.css?v=1.12.8"> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/plugin/all.mini.js?v=1.12.8"></script> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/plugin/layui/layui.all.js?v=1.12.8"></script> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/plugin/My97DatePicker/WdatePicker.js?v=1.12.8"></script> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/plugin/common.js?v=1.12.8"></script> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/js/sys/theme/theme.js?v=1.12.8"></script> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/plugin/jquery-raty/jquery.raty.js?v=1.12.8"></script> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/js/common/actions.js?v=1.12.8"></script> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/js/common/menu.js?v=1.12.8"></script> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/js/common/plugins/vue/vue.min.js?v=1.12.8"></script> <script type="text/javascript" src="https://thos.tsinghua.edu.cn/fp/resource/js/common/plugins/vant/lib/vant.min.js?v=1.12.8"></script> <script type="text/javascript">
 		$(function(){
 			setTimeout("footerFunction()","6000");
 		});
