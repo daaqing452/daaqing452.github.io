@@ -1,7 +1,7 @@
 var str_computer_graphics = "\
 	<h1> Computer Graphics </h1> \
 	<p> <b>GAMES 101</b>: [<a href='https://www.bilibili.com/video/av90798049'>bilibili</a>] [<a href='https://sites.cs.ucsb.edu/~lingqi/teaching/games101.html'>UCSB</a>] [<a href='http://sites.cs.ucsb.edu/~lingqi/'>Lingqi Yan</a>] [<a href='http://games-cn.org/'>GAMES</a>] </p> \
-	<p> Update v0: 2020.12.07 </p> \
+	<p> Update v1: 2020.12.07 </p> \
 	<h2> Transformation </h2> \
 	<h3> Homogeneous Coordinate </h3> \
 	<p>3D Point: \\( (x,y,z,1)^\\top \\) </p> \

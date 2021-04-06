@@ -13,6 +13,7 @@
 
   <!-- Notes -->
   <script src="./note_files/computer_graphics/computer_graphics.js"></script>
+  <script src="./note_files/geometry_modeling/geometry_modeling.js"></script>
   <script src="./note_files/parallel_programming/parallel_programming.js"></script>
   <script src="./note_files/machine_learning/machine_learning.js"></script>
   <script src="./note_files/psychology/psychology.js"></script>
@@ -30,7 +31,7 @@
 
   $(document).ready(function() {
   	window_resize();
-  	load_note('psychology');
+  	load_note('geometry_modeling');
   });
 
   function update_sign(node, is_open) {
@@ -138,6 +139,7 @@
   function load_note(note_name) {
   	var page = 'hello world';
   	if (note_name == 'computer_graphics') page = str_computer_graphics;
+    if (note_name == 'geometry_modeling') page = str_geometry_modeling;
   	if (note_name == 'parallel_programming') page = str_parallel_programming;
   	if (note_name == 'machine_learning') page = str_machine_learning;
   	if (note_name == 'psychology') page = str_psychology;
@@ -211,7 +213,7 @@
       <a class="nav-link dropdown-toggle font-color-black" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">图形学</a>
       <div class="dropdown-menu">
         <a class="dropdown-item" onclick="load_note('computer_graphics')">Computer Graphics</a>
-        <a class="dropdown-item" href='#'>几何</a>
+        <a class="dropdown-item" onclick="load_note('geometry_modeling')" href='#'>几何建模与处理</a>
         <!--<div class="dropdown-divider"></div>-->
       </div>
     </li>

@@ -1,7 +1,7 @@
 var str_parallel_programming = "\
 	<h1> Parallel Progrmming </h1> \
 	<p> <b>Udacity CS344</b>: [<a href='https://classroom.udacity.com/courses/cs344'>Lecture</a>] </p> \
-	<p> Update v0: 2020.12.22 </p> \
+	<p> Update v1: 2020.12.22 </p> \
 	<h2> Parallel Computing Model </h2> \
 	<h3> CPU vs. GPU </h3> \
 	<table cellpadding='5px'> \
