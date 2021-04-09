@@ -321,14 +321,14 @@ var str_computer_graphics = "\
 		<li> Parameter Mapping: e.g., given points \\( (u,v) \\) and \\( f:{\\mathbb R}^2\\rightarrow {\\mathbb R}^3 \\), can enumerate all points \\( (u,v)\\rightarrow(x,y,z) \\) ) \
 	</ul> \
 	<h3> Bézier Curve </h3> \
-	<img width='500px' src='note_files/computer_graphics/bezier_curve.png'/> \
+	$$ {\\bf b}^{(n)}(t)=\\sum_{j=0}^n{{\\bf b}_jB_{n,j}(t)} \\hspace{100cm} $$ \
+	<p> Notation: </p> \
+	<p> \\( {\\bf b}^{(n)}(t) \\): Bézier curve of order \\(n\\) </p> \
+	<p> \\( {\\bf b}_j \\): Bézier control points </p> \
+	<p> \\( B_{n,j}(t) = \\begin{pmatrix} n \\\\ i \\end{pmatrix}t^i(1-t)^{n-i} \\): Bernstein polynomials </p> \
 	<h4> de Casteljau Algorithm </h4> \
 	<p> Recursively lerp control points </p> \
-	$$ {\\bf b}^n(t)=\\sum_{j=0}^n{{\\bf b}_jB_j^n(t)} \\hspace{100cm} $$ \
-	<p> Notation: </p> \
-	<p> \\( {\\bf b}^n(t) \\): Bézier curve of order \\(n\\) </p> \
-	<p> \\( {\\bf b}_j \\): Bézier control points </p> \
-	<p> \\( B_j^n(t) = \\begin{pmatrix} n \\\\ i \\end{pmatrix}t^i(1-t)^{n-i} \\): Bernstein polynomials </p> \
+	<img width='500px' src='note_files/computer_graphics/bezier_curve.png'/> \
 	<h4> Properties of Cubic Bézier </h4> \
 	<ul> \
 		<li> Interpolates endpoints: \\( {\\bf b}(0)={\\bf b}_0, {\\bf b}(1)={\\bf b}_3 \\) </li> \
