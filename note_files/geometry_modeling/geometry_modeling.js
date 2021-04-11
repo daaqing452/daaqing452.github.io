@@ -109,7 +109,7 @@ var str_geometry_modeling = "\
 		<tr> <td> - </td> <td> Foley-Nielsen参数化： </td> <td> \\(t_{i+1}-t_i=||p_{i+1}-p_i||\\cdot\\left\( 1+\\frac{3}{2}\\frac{\\hat{\\alpha}_i||p_i-p_{i-1}||}{||p_i-p_{i-1}||+||p_{i+1}-p_i||}+\\frac{3}{2}\\frac{\\hat{\\alpha}_{i+1}||p_{i+1}-p_i||}{||p_{i+1}-p_i||+||p_{i+2}-p_{i+1}||} \\right\) \\) </tr> </tr> \
 		<tr> <td> </td> <td> </td> <td> 其中\\( \\alpha_i=\\angle_{(p_{i-1},p_i,p_{i+1})} \\)，\\( \\hat{\\alpha}_i=\\min{\\left\( \\pi-\\alpha_i, \\frac{\\pi}{2} \\right\)} \\) </td> </tr> \
 	</table> \
-	<h2> 样条 </h2> \
+	<h2> 曲线建模 </h2> \
 	<h3> 连续性 </h3> \
 	<h4> 参数连续性 </h4> \
 	<p> 给定两条曲线：\\( x_1(t) \\)定义在\\([t_0,t_1]\\)，\\( x_2(t) \\)定义在\\([t_1,t_2]\\)，如果曲线\\(x_1\\)和\\(x_2\\)从0阶至\\(r\\)阶的导数向量在\\(t_1\\)处完全相同，则称它们为\\(\\text{C}^r\\)连续的 </p> \
@@ -150,7 +150,7 @@ var str_geometry_modeling = "\
 	<li> 基性：\\(B={B_{n,0},B_{n,1},\\cdots,B_{n,n}}\\)是次数不高于\\(n\\)的多项式空间的一组基 </li> \
 	<li> 递推：\\(B_{n,i}(t)=(1-t)B_{n-1,i}(t)+tB_{n-1,i-1}(t)\\) </li> \
 	<li> 导数：\\( \\frac{\\text{d}}{\\text{d}t}B_{n,i}(t)=n[B_{n-1,i-1}(t)-B_{n-1,i}(t)] \\) </li> </ul> \
-	<h3> Bézier Curve </h3> \
+	<h3> Bézier曲线 </h3> \
 	$$ {\\bf f}(t)=\\sum_{i=0}^n{B_{n,i}(t){\\bf p}_i} $$ \
 	<p> 性质： </p> \
 	<ul> <li> 凸包性：曲线在控制点组成的凸包内 </li> \
@@ -167,13 +167,27 @@ var str_geometry_modeling = "\
 	<li> \\(\\text{C}^1\\)连续：\\({\\bf p}_{k-1},{\\bf p}_k,{\\bf p}_{k+1}\\)三点共线且等长 </li> \
 	<li> \\(\\text{G}^1\\)连续：\\({\\bf p}_{k-1},{\\bf p}_k,{\\bf p}_{k+1}\\)三点共线 </li> \
 	<li> \\(\\text{C}^2\\)连续：\\(\\bigtriangleup_{{\\bf p}_{k-2},{\\bf p}_{k-1},{\\bf p}_k}\\)与\\(\\bigtriangleup_{{\\bf p}_k,{\\bf p}_{k+1},{\\bf p}_{k+2}}\\)相似 </li> </ul> \
+	<h3> 有理Bézier曲线 </h3> \
+	<p> 每个控制顶点上设置一个权系数\\(\\omega_i\\)： </p> \
+	$$ {\\bf f}^{\\text{(eucl)}}(t) = \\frac{\\sum_{i=0}^n{B_{d,i}(t)\\omega_i{\\bf p}_i}}{\\sum_{i=0}^n{B_{d,i}(t)\\omega_i}} = \\sum_{i=0}^n{q_i(t){\\bf p}_i} $$ \
+	<p> 其中 </p> \
+	$$ q_i(t)=\\frac{B_{d,i}(t)\\omega_i}{\\sum_{j=0}^n{B_{d,j}(t)\\omega_j}},&emsp;\\sum_{i=0}^n{q_i(t)}=1 $$ \
+	<ul> <li> 具有Bézier曲线的大部分性质 </li> \
+	<li> 如权系数都相等，则退化为Bézier曲线 </li> \
+	<li> <p> 控制顶点的权系数越大，曲线就越靠近该点 </p> \
+	<p> <img width='600px' src='note_files/geometry_modeling/eucl0.png'/> </p> </li> </ul> \
+	<p> 有理Bézier曲线可以表示更多类型的曲线，可以表示圆弧，而Bézier曲线不能 </p> \
+	<p> <img width='200px' src='note_files/geometry_modeling/eucl1.png'/> </p> \
+	<h4> 几何解释 </h4> \
+	<p> 类似齐次坐标的升维：\\({\\bf x}\\rightarrow \\begin{pmatrix} \\omega{\\bf x} \\\\ \\omega \\end{pmatrix} \\)，有理Bézier曲线是升维以后，利用高维空间中的Bézier曲线投影在原维空间中形成 </p> \
+	<p> <img width='150px' src='note_files/geometry_modeling/eucl2.png'/> </p> \
 	<h3> B样条 </h3> \
 	<p> 第\\(1\\)阶函数： </p> \
 	$$ N_{1,i}(t)=\\left\\\{ \\begin{align} 1\\quad & t_i\\leq t\\leq t_{i+1} \\\\ 0\\quad & \\text{otherwise} \\end{align} \\right. $$ \
 	<p> 第\\(k\\)阶（第\\(k-1\\)度）函数： </p> \
 	$$ N_{k,i}(t)=\\frac{t-t_i}{t_{i+k-1}-t_i}N_{k-1,i}(t)+\\frac{t_{i+k}-t}{t_{i+k}-t_{i+1}}N_{k-1,i+1}(t) $$ \
 	<p> <img width='250px' src='note_files/geometry_modeling/b-spline0.png'/> &emsp;&emsp; <img width='250px' src='note_files/geometry_modeling/b-spline1.png'/> </p> \
-	<p> 给定控制点\\({\\bf p}_0,{\\bf p}_1,\\cdots,{\\bf p}_n\\)和时间序列\\(T=\\\{t_0,t_1,\\cdots,t_n,\\cdots,t_{n+k}\\\}\\)，\\(k\\)阶B样条曲线定义为： </p> \
+	<p> 给定控制点\\({\\bf p}_0,{\\bf p}_1,\\cdots,{\\bf p}_n\\)和时间点向量\\(T=\\\{t_0,t_1,\\cdots,t_n,\\cdots,t_{n+k}\\\}\\)，\\(k\\)阶B样条曲线定义为： </p> \
 	$$ {\\bf f}(t)=\\sum_{i=0}^n{N_{k,i}(t)\\cdot{\\bf p}_i} $$ \
 	<p> 性质： </p> \
 	<ul> <li> <p> 局部性：当且仅当\\(t_i&lt;t&lt;t_{i+k}\\)时，\\(N_{k,i}(t)&gt;0\\) </p> \
@@ -181,9 +195,60 @@ var str_geometry_modeling = "\
 	<li> 权性：当\\(t_{k-1}\\leq t\\leq t_{n+1}\\)时，\\(\\sum_{i=0}^n{N_{k,i}(t)}=1\\)；凸包性 </li> \
 	<li> 一定条件下可退化为Bézier曲线 </li> \
 	<li> <p> 当\\(t_i\\leq t_j\\leq t_{i+k}\\)时，\\(N_{k,i}(t)\\)在时间点\\(t_j\\)处\\(\\text{C}^{k-2}\\)光滑 </p> \
-	<p> \\(m\\)个相邻的时间点重合，光滑性减少\\(m-1\\)阶；可以通过操纵时间序列上时间点的重合控制光滑性 </p> \
+	<p> \\(m\\)个相邻的时间点重合，光滑性减少\\(m-1\\)阶；可以通过操纵时间点向量上时间点的重合控制光滑性 </p> \
 	<p> 为了让曲线经过端点，可以让前\\(k\\)个或后\\(k\\)个时间点重合 </p> \
 	<p> <img width='600px' src='note_files/geometry_modeling/b-spline2.png'/> </p> </li> </ul> \
 	<h4> de Boor算法 </h4> \
 	<p> 利用B样条函数递推公式 </p> \
+	<h3> 非均匀有理B样条（Non-Uniform Rational B-Spline，NURBS） </h3> \
+	<p> 在B样条基础上加上有理性，即给每个控制顶点上设置一个权系数\\(\\omega_i\\)： </p> \
+	$$ {\\bf f}(t)=\\frac{\\sum_{i=0}^n{N_{d,i}(t)\\omega_i{\\bf p}_i}}{\\sum_{i=0}^n{N_{d,i}(t)\\omega_i}} $$ \
+	<p> 影响NURBS曲线建模的因素 </p> \
+	<ul> <li> 控制顶点:用户交互的手段 </li> \
+	<li> 时间点向量：决定了B样条基函数 </li> \
+	<li> 权系数：影响曲线的形状，生成圆锥曲线等 </li> </ul> \
+	<h3> 细分曲线 </h3> \
+	<p> 思想： </p> \
+	<ul> <li> 拓扑规则（Splitting）：加入新点，组成新多边形 </li> \
+	<li> <p> 几何规则（Averaging）：移动顶点，局部加权平均 </p> \
+		<ul> <li> 逼近型：对所有顶点都移动 </li> \
+		<li> 插值型：只对新顶点移动 </li> </ul> </li> </ul> \
+	<h4> Chaikin细分 </h4> \
+	<p> Chaikin割角法逼近： </p> \
+	<ul> <li> 每条边取中点，生成新点 </li> \
+	<li> 每个点与其相邻点平均（顺时针） </li> \
+	<li> 迭代生成曲线 </li> </ul> \
+	$$ \\begin{align} {\\bf p}'_{2i} &= \\frac{1}{4}{\\bf p}_{i-1}+\\frac{3}{4}{\\bf p}_i \\\\ \
+	{\\bf p}'_{2i+1} &= \\frac{3}{4}{\\bf p}_i+\\frac{1}{4}{\\bf p}_{i+1} \\end{align} $$ \
+	<ul style='list-style-type: circle'> <li> 极限曲线为二次均匀B样条曲线 </li> \
+	<li> 节点处\\(\\text{C}^1\\)，其余点处\\(\\text{C}^{\\infty}\\) </li> </ul> \
+	<p> <img width='500px' src='note_files/geometry_modeling/subdivision_curve0.png'/> </p> \
+	<h4> 均匀三次B样条曲线细分 </h4> \
+	<p> 拓扑规则：边分裂成两条新边 </p> \
+	$$ \\begin{align} {\\bf p}'_{2i} &= \\frac{1}{8}{\\bf p}_{i-1}+\\frac{3}{4}{\\bf p}_i+\\frac{1}{8}{\\bf p}_{i+1} \\\\ \
+	{\\bf p}'_{2i+1} &= \\frac{1}{2}{\\bf p}_i+\\frac{1}{2}{\\bf p}_{i+1} \\end{align} $$ \
+	<h4> \\(2n\\)点插值细分 </h4> \
+	<p> 补角法： </p> \
+	<ul> <li> 保留原有顶点 </li> \
+	<li> 对每条边，增加一个新顶点 </li> \
+	<li> 迭代生成曲线 </li> </ul> \
+	<ul style='list-style-type:circle'> <li> <p> 2点插值细分：</p> \
+	$$ {\\bf p}'_{2i+1}=\\frac{1}{2}({\\bf p}_i+{\\bf p}_{i+1}) $$ </li> \
+	<li> <p> 4点插值细分： </p> \
+	$$ {\\bf p}'_{2i+1}=\\frac{{\\bf p}_i+{\\bf p}_{i+1}}{2}+\\alpha\\left\( \\frac{{\\bf p}_i+{\\bf p}_{i+1}}{2}-\\frac{{\\bf p}_{i-1}+{\\bf p}_{i+2}}{2} \\right\) $$ \
+	<p> <img width='300px' src='note_files/geometry_modeling/subdivision_curve1.png'/> </p> \
+	<p> 可以证明，当\\(\\alpha\\in\\left\(0,\\frac{1}{8}\\right\)\\)时，生成的细分曲线是光滑的；否则，细分曲线非光滑，生成了分形曲线（详见<b>分形几何</b>） </p> \
+	<p> 典型细分方法： </p> \
+	$$ {\\bf p}'_{2i+1}=-\\frac{1}{16}{\\bf p}_{i-1}+\\frac{9}{16}{\\bf p}_i+\\frac{9}{16}{\\bf p}_{i+1}-\\frac{1}{16}{\\bf p}_{i+2} $$ </li> \
+	<li> <p> 6点插值细分： </p> \
+	$$ {\\bf p}'_{2i+1}=\\frac{3}{256}{\\bf p}_{i-2}+\\frac{25}{256}{\\bf p}_{i-1}+\\frac{150}{256}{\\bf p}_i+\\frac{150}{256}{\\bf p}_{i+1}-\\frac{25}{256}{\\bf p}_{i+2}+\\frac{3}{256}{\\bf p}_{i+3} $$ </ul> \
+	<h4> 线性曲线细分性质证明 </h4> \
+	<p> 将细分过程表达成矩阵形式（新顶点是老顶点的线性组合）： </p> \
+	$$  2n \\left\\\{ \\begin{bmatrix} \\vdots \\\\ {\\bf p}'_{2i-1} \\\\ {\\bf p}'_{2i} \\\\ {\\bf p}'_{2i+1} \\\\ \\vdots \\end{bmatrix} \\right\. = 2n \\left\\\{ \\begin{bmatrix} \\ddots & & & & \\\\ & 1/2 & & & \\\\ & 1/2 & 1/2 & & \\\\ & & 1/2 & 1/2 & \\\\ & & & & \\ddots \\end{bmatrix} \\right\\\} n $$ \
+	<h4> 双圆弧插值细分 </h4> \
+	<p> 非线性细分 </p> \
+	<ul> <li> 给定一条边，新点为插值其两端点及两端切向的双圆弧的一个连接点，也是其两端点两端切向的所确定三角形的内心 </li> \
+	<li> 每个细分步骤后调整切向 </li> \
+	<li> 极限曲线\\(\\text{G}^2\\)，光顺，保形 </li> </ul> \
+	<p> <img width='200px' src='note_files/geometry_modeling/subdivision_curve2.png'/> </p> \
 ";
