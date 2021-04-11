@@ -244,7 +244,12 @@ var str_geometry_modeling = "\
 	$$ {\\bf p}'_{2i+1}=\\frac{3}{256}{\\bf p}_{i-2}+\\frac{25}{256}{\\bf p}_{i-1}+\\frac{150}{256}{\\bf p}_i+\\frac{150}{256}{\\bf p}_{i+1}-\\frac{25}{256}{\\bf p}_{i+2}+\\frac{3}{256}{\\bf p}_{i+3} $$ </ul> \
 	<h4> 线性曲线细分性质证明 </h4> \
 	<p> 将细分过程表达成矩阵形式（新顶点是老顶点的线性组合）： </p> \
-	$$  2n \\left\\\{ \\begin{bmatrix} \\vdots \\\\ {\\bf p}'_{2i-1} \\\\ {\\bf p}'_{2i} \\\\ {\\bf p}'_{2i+1} \\\\ \\vdots \\end{bmatrix} \\right\. = 2n \\left\\\{ \\begin{bmatrix} \\ddots & & & & \\\\ & 1/2 & & & \\\\ & 1/2 & 1/2 & & \\\\ & & 1/2 & 1/2 & \\\\ & & & & \\ddots \\end{bmatrix} \\right\\\} n $$ \
+	$$  \\underbrace{\\begin{bmatrix} \\vdots \\\\ {\\bf p}'_{2i-1} \\\\ {\\bf p}'_{2i} \\\\ {\\bf p}'_{2i+1} \\\\ \\vdots \\end{bmatrix}}_{2n\\times1} = \\underbrace{\\begin{bmatrix} \\ddots & & & & \\\\ & 1/b & & & \\\\ & 1/a & 1/b & & \\\\ & & 1/a & 1/b & \\\\ & & & & \\ddots \\end{bmatrix}}_{2n\\times n} \\underbrace{\\begin{bmatrix} \\vdots \\\\ {\\bf p}_{i-1} \\\\ {\\bf p}_i \\\\ {\\bf p}_{i+1} \\\\ \\vdots \\end{bmatrix}}_{n\\times1} $$ \
+	<p> 极限曲线上的点可由细分矩阵\\({\\bf M}_{\\text{subdiv}}\\)的幂次的极限求得： </p> \
+	$$ \\begin{bmatrix} \\vdots \\\\ {\\bf p}^{[\\infty]} \\\\ \\vdots \\end{bmatrix} = \\lim_{k\\rightarrow\\infty}{\\bf M}^k_{\\text{subdiv}} \\begin{bmatrix} \\vdots \\\\ {\\bf p} \\\\ \\vdots \\end{bmatrix} $$ \
+	<p> 其中\\({\\bf M}_{\\text{subdiv}}\\)可进行分解： </p> \
+	$$ {\\bf M}_{\\text{subdiv}}=({\\bf UDU^{-1}})^k={\\bf UD}^k{\\bf U}^{-1} $$ \
+	<p> 收敛的必要条件为细分矩阵的最大特征根为\\(1\\)，否则会爆炸（\\(&gt;1\\)）或收缩（\\(&lt;1\\)） </p> \
 	<h4> 双圆弧插值细分 </h4> \
 	<p> 非线性细分 </p> \
 	<ul> <li> 给定一条边，新点为插值其两端点及两端切向的双圆弧的一个连接点，也是其两端点两端切向的所确定三角形的内心 </li> \
