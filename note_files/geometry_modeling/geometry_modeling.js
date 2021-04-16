@@ -64,6 +64,16 @@ var str_geometry_modeling = "\
 	\\end{bmatrix} $$ \
 	<p> 则最小解满足 </p> \
 	$$ {\\bf A}=\\left\( {\\bf M}^{\\top}{\\bf M} \\right\)^{-1}{\\bf M}^{\\top}y $$ \
+	<h3> Bernstein多项式 </h3> \
+	$$ B_{n,j}(x)=\\left\( \\begin{align} n \\\\ j \\end{align} \\right\) x^j(1-x)^{n-j} $$ \
+	<p> <img width='450px' src='note_files/geometry_modeling/bernstein0.png'/>&emsp; \
+	<img width='450px' src='note_files/geometry_modeling/bernstein1.png'/> </p> \
+	<p> 性质： </p> \
+	<ul> <li> 对称性：\\(B_{n,i}(t)=B_{n,n-i}(1-t) \\)；\\(B_{n,i}(t)\\)在\\(t=\\frac{i}{n}\\)时达到最大值 </li> \
+	<li> 正权性：\\( B_{n,i}(t)\\geq 0 \\)，\\( \\sum_{i=0}^n{B_{n,i}(t)}=1 \\)，对于\\(\\forall t\\in[0,1]\\)</li> \
+	<li> 基性：\\(B={B_{n,0},B_{n,1},\\cdots,B_{n,n}}\\)是次数不高于\\(n\\)的多项式空间的一组基 </li> \
+	<li> 递推：\\(B_{n,i}(t)=(1-t)B_{n-1,i}(t)+tB_{n-1,i-1}(t)\\) </li> \
+	<li> 导数：\\( \\frac{\\text{d}}{\\text{d}t}B_{n,i}(t)=n[B_{n-1,i-1}(t)-B_{n-1,i}(t)] \\) </li> </ul> \
 	<h3> RBF </h3> \
 	<p> RBF（径向基函数，Radial Basis Function） </p> \
 	<p> Gauss拟合函数的组合 </p> \
@@ -126,7 +136,7 @@ var str_geometry_modeling = "\
 	<li> \\(\\text{G}^1\\)：两曲线在连接点处有公共的切线，即切线方向连续 </li> \
 	<li> \\(\\text{G}^2\\)：两曲线在连接点处有公共的曲率圆，即曲率连续 </li> </ul> \
 	</ul> \
-	<h3> 三次样条函数 </h3> \
+	<h3> 三次样条曲线 </h3> \
 	<p> 函数\\(S(x)\\in\\text{C}^2[a,b]\\)，且在每个小区间\\([x_i,x_{i+1}]\\)上是三次多项式，其中\\(a\\leq x_0&lt;x_1&lt;\\cdots&lt;x_n=b\\)是给定节点，则称\\(S(x)\\)是节点\\(x_0,x_1,\\cdots,x_n\\)上的三次样条函数 </p> \
 	<h4> 求解 </h4> \
 	<ol> <li> \\(S(x)\\)在每个小区间\\([x_i,x_{i+1}]\\)上有4个待定系数，共\\(4n\\)个未知数 </li> \
@@ -140,16 +150,6 @@ var str_geometry_modeling = "\
 	$$ M(x) = EIk(x)=EI\\frac{y''(x)}{(1+(y'(x))^2)^{3/2}} $$ \
 	<p> 根据小扰度假设（弯角不大于45°），\\( y'(x)\\ll 1 \\)，则\\( M(x)\\approx EIy''(x)=ax+b \\)，即\\( y(x) \\)为三次函数，那么压铁的木样条曲线为分段三次函数 </p> \
 	<h4> 三弯矩方程 </h4> \
-	<h3> Bernstein多项式 </h3> \
-	$$ B_{n,j}(x)=\\left\( \\begin{align} n \\\\ j \\end{align} \\right\) x^j(1-x)^{n-j} $$ \
-	<p> <img width='450px' src='note_files/geometry_modeling/bernstein0.png'/>&emsp; \
-	<img width='450px' src='note_files/geometry_modeling/bernstein1.png'/> </p> \
-	<p> 性质： </p> \
-	<ul> <li> 对称性：\\(B_{n,i}(t)=B_{n,n-i}(1-t) \\)；\\(B_{n,i}(t)\\)在\\(t=\\frac{i}{n}\\)时达到最大值 </li> \
-	<li> 正权性：\\( B_{n,i}(t)\\geq 0 \\)，\\( \\sum_{i=0}^n{B_{n,i}(t)}=1 \\)，对于\\(\\forall t\\in[0,1]\\)</li> \
-	<li> 基性：\\(B={B_{n,0},B_{n,1},\\cdots,B_{n,n}}\\)是次数不高于\\(n\\)的多项式空间的一组基 </li> \
-	<li> 递推：\\(B_{n,i}(t)=(1-t)B_{n-1,i}(t)+tB_{n-1,i-1}(t)\\) </li> \
-	<li> 导数：\\( \\frac{\\text{d}}{\\text{d}t}B_{n,i}(t)=n[B_{n-1,i-1}(t)-B_{n-1,i}(t)] \\) </li> </ul> \
 	<h3> Bézier曲线 </h3> \
 	$$ {\\bf f}(t)=\\sum_{i=0}^n{B_{n,i}(t){\\bf p}_i} $$ \
 	<p> 性质： </p> \
@@ -160,7 +160,7 @@ var str_geometry_modeling = "\
 		<li> \\({\\bf f}''(0)=n(n-1)[{\\bf p}_2-2{\\bf p}_1+{\\bf p}_0]\\)，\\({\\bf f}''(1)=n(n-1)[{\\bf p}_n-2{\\bf p}_{n-1}+{\\bf p}_{n-2}]\\) </li> </ul> \
 	</li> </ul> \
 	<h4> de Casteljau算法 </h4> \
-	<p> 利用Bernstein多项式的递推公式 </p> \
+	<p> 利用<a href='#_Bernstein多项式_'>Bernstein多项式</a>的递推公式</a> </p> \
 	<p> 求\\({\\bf f}(t)\\)，先在\\(n\\)个控制点依次连成的线段上取位置\\(t\\in[0,1]\\)的点，变成\\(n-1\\)个点，再用它们迭代到最终剩一个点 </p> \
 	<h4> 两条Bézier曲线的拼接条件 </h4> \
 	<ul> <li> \\(\\text{C}^0\\)连续：共享端点\\({\\bf p}_k\\) </li> \
@@ -200,7 +200,7 @@ var str_geometry_modeling = "\
 	<p> <img width='600px' src='note_files/geometry_modeling/b-spline2.png'/> </p> </li> </ul> \
 	<h4> de Boor算法 </h4> \
 	<p> 利用B样条函数递推公式 </p> \
-	<h3> 非均匀有理B样条（Non-Uniform Rational B-Spline，NURBS） </h3> \
+	<h3> NURBS（非均匀有理B样条，Non-Uniform Rational B-Spline） </h3> \
 	<p> 在B样条基础上加上有理性，即给每个控制顶点上设置一个权系数\\(\\omega_i\\)： </p> \
 	$$ {\\bf f}(t)=\\frac{\\sum_{i=0}^n{N_{d,i}(t)\\omega_i{\\bf p}_i}}{\\sum_{i=0}^n{N_{d,i}(t)\\omega_i}} $$ \
 	<p> 影响NURBS曲线建模的因素 </p> \
@@ -242,7 +242,7 @@ var str_geometry_modeling = "\
 	$$ {\\bf p}'_{2i+1}=-\\frac{1}{16}{\\bf p}_{i-1}+\\frac{9}{16}{\\bf p}_i+\\frac{9}{16}{\\bf p}_{i+1}-\\frac{1}{16}{\\bf p}_{i+2} $$ </li> \
 	<li> <p> 6点插值细分： </p> \
 	$$ {\\bf p}'_{2i+1}=\\frac{3}{256}{\\bf p}_{i-2}+\\frac{25}{256}{\\bf p}_{i-1}+\\frac{150}{256}{\\bf p}_i+\\frac{150}{256}{\\bf p}_{i+1}-\\frac{25}{256}{\\bf p}_{i+2}+\\frac{3}{256}{\\bf p}_{i+3} $$ </ul> \
-	<h4> 线性曲线细分性质证明 </h4> \
+	<h4> 线性曲线细分性质解释 </h4> \
 	<p> 将细分过程表达成矩阵形式（新顶点是老顶点的线性组合）： </p> \
 	$$  \\underbrace{\\begin{bmatrix} \\vdots \\\\ {\\bf p}'_{2i-1} \\\\ {\\bf p}'_{2i} \\\\ {\\bf p}'_{2i+1} \\\\ \\vdots \\end{bmatrix}}_{2n\\times1} = \\underbrace{\\begin{bmatrix} \\ddots & & & & \\\\ & 1/b & & & \\\\ & 1/a & 1/b & & \\\\ & & 1/a & 1/b & \\\\ & & & & \\ddots \\end{bmatrix}}_{2n\\times n} \\underbrace{\\begin{bmatrix} \\vdots \\\\ {\\bf p}_{i-1} \\\\ {\\bf p}_i \\\\ {\\bf p}_{i+1} \\\\ \\vdots \\end{bmatrix}}_{n\\times1} $$ \
 	<p> 极限曲线上的点可由细分矩阵\\({\\bf M}_{\\text{subdiv}}\\)的幂次的极限求得： </p> \
@@ -256,4 +256,36 @@ var str_geometry_modeling = "\
 	<li> 每个细分步骤后调整切向 </li> \
 	<li> 极限曲线\\(\\text{G}^2\\)，光顺，保形 </li> </ul> \
 	<p> <img width='200px' src='note_files/geometry_modeling/subdivision_curve2.png'/> </p> \
+	<h3> 隐式曲线 </h3> \
+	<p> 自变量\\(x\\)和应变量\\(y\\)的关系非显式关系，是一个隐式的关系（代数方程）：\\(f(x,y)=0\\) </p> \
+	<p> \\(f(x,y)&lt;0\\)或\\(&gt;0\\)分别表示在曲线内部（左侧）或外部（右侧） </p> \
+	<h4> Marching Cubes算法 </h4> \
+	<p> 思想： </p> \
+	<ul> <li> 在一些离散格子点上求值 </li> \
+	<li> 然后利用局部连续性插值出值为\\(0\\)的点 </li> \
+	<li> 对于每个格子，根据其四个格点的正负情况，推断格子内曲线走向 </li> \
+	<li> 按一定的顺序连接这些点形成离散曲线 </li> </ul> \
+	<p> <img width='150px' src='note_files/geometry_modeling/marching_cube0.png'/>&emsp;<img width='150px' src='note_files/geometry_modeling/marching_cube1.png'/> </p> \
+	<p> <img width='300px' src='note_files/geometry_modeling/marching_cube2.png'/>&emsp;<img width='215px' src='note_files/geometry_modeling/marching_cube3.png'/> </p> \
+	<ul style='list-style-type: circle'> <li> 采样率不够高的情况下会有歧义情况 </li> \
+	<li> 使用四分树等数据结构自适应格点分辨率 </li> </ul> \
+	<h2> 曲面建模 </h2> \
+	<h3> 张量积参数曲面 </h3> \
+	$$ \\begin{align} {\\bf f}(u,v)=\\begin{pmatrix} x(u,v) \\\\ y(u,v) \\\\ z(u,v) \\end{pmatrix} &= \\sum_{i=0}^m{\\sum_{j=0}^n{b_{m,i}(u)b_{n,j}(v){\\bf p}_{i,j}}} \\\\ &= \\sum_{i=0}^m{b_{m,i}(u)}\\sum_{j=0}^n{b_{n,j}(v)}{\\bf p}_{i,j} \\end{align} $$ \
+	<p> <img width='250px' src='note_files/geometry_modeling/tensor_product_surface0.png'/> </p> \
+	<ul> <li> 两个独立方向的“曲线的曲线” </li> \
+	<li> 两个参数的顺序无关 </li> \
+	<li> 性质大都类同于曲线的性质 </li> \
+	<li> 特殊问题：角点的光滑性 </li> </ul> \
+	<h4> Trimmed NURBS曲面 </h4> \
+	<p> 表达带“洞”或非矩形边界的曲面 </p> \
+	<p> 曲面上的曲线：使用参数域上的NURBS曲线来定义，然后复合得到曲面上的曲线 </p> \
+	<p> <img width='250px' src='note_files/geometry_modeling/tensor_product_surface1.png'/> </p> \
+	<h4> 张量积体 </h4> \
+	$$ {\\bf f}(u,v,w)=\\sum_{i=0}^m\\sum_{j=0}^n\\sum_{k=0}^o{b_{m,i}(u)b_{n,j}(v)b_{o,k}(w){\\bf p}_{i,j,k}} $$ \
+	<p> <img width='200px' src='note_files/geometry_modeling/tensor_product_surface2.png'/> </p> \
+	<h3> 三角域上的Bézier曲面片 </h3> \
+	$$ {\\bf f}({\\bf x}) = \\sum_{\\substack{i+j+k=n\\\\i,j,k\\geq0}}{\\frac{n!}{i!j!k!}\\alpha^i\\beta^j\\gamma^k{\\bf p}_{i,j,k}} $$ \
+	$$ {\\bf x}=\\alpha{\\bf a}+\\beta{\\bf b}+\\gamma{\\bf c} &emsp; \\alpha+\\beta+\\gamma=1 $$ \
+	<p> <img width='350px' src='note_files/geometry_modeling/triangle_bezier.png'/> </p> \
 ";
